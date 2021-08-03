@@ -1,0 +1,16 @@
+*.o
+libft.h.gch
+a.out
+.DS_Store
+settings.json
+extensions.json
+.vscode/
+.ignore
+*.a
+.DS_Store
+settings.json
+extensions.json
+.vscode/
+test.txt
+./tester
+tester/tester.sh
