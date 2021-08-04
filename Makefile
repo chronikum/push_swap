@@ -10,6 +10,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c
 
+VALIDATION = ./validation/ft_check_input.c
+
 all: $(NAME)
 
 libft:
@@ -17,10 +19,10 @@ libft:
 	mv ./libft/${LIBFTNAME} ${LIBFTNAME}
 
 ${NAME}: libft
-	${CC} ${CFLAGS} ${SRC} ${LIBFTNAME} -o ${PUSH_SWAP}
+	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${LIBFTNAME} -o ${PUSH_SWAP}
 
 bonus: libft
-	${CC} ${CFLAGS} ${SRC} ${LIBFTNAME} -o ${PUSH_SWAP}
+	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${LIBFTNAME} -o ${PUSH_SWAP}
 
 clean:
 	rm -rf *.o

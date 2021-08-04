@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 13:43:08 by jfritz            #+#    #+#              #
-#    Updated: 2021/08/01 10:17:19 by jfritz           ###   ########.fr        #
+#    Updated: 2021/08/04 14:38:18 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,11 @@ ft_lstadd_front.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 all: $(NAME)
 
 ${NAME}:
-	${CC} ${CFLAGS} -c ${SRC} ${CUSTOM}
+	${CC} ${CFLAGS} -c ${SRC} ${CUSTOM} ${BNS}
 	ar rc ${NAME} *.o
 
 bonus:
-	${CC} ${CFLAGS} -c ${BNS}
+	${CC} ${CFLAGS} -c ${SRC} ${CUSTOM} ${BNS}
 	ar rc ${NAME} *.o
 
 clean:

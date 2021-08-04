@@ -1,6 +1,8 @@
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef FT_PUSH_SWAP_H
+# define FT_PUSH_SWAP_H
 
-#include "libft/libft.h"
+# include "libft/libft.h"
+
+int	ft_check_input(char **argv, int argc);
 
 #endif
