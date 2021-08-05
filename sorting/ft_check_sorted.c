@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 09:40:06 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/05 10:02:30 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/05 10:20:18 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 /*
 **	Returns 1 if array is sorted
 */
-int	ft_check_is_sorted(int *array, int argc)
+int	ft_check_is_sorted(t_pw *arr)
 {
 	int i;
 	int last;
 
 	i = 0;
-	last = array[0];
-	while (i < (argc - 2))
+	last = arr->arr[0];
+	while (i < (arr->count - 1))
 	{
-		if (last < array[(i + 1)])
-			last = array[i];
+		if (last < arr->arr[(i + 1)])
+			last = arr->arr[i + 1];
 		else
 			return (0);
 		i++;
