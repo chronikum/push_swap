@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/05 09:38:33 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/05 09:57:59 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_fill_array(int **array, char **argv, int argc)
 	counter = 1;
 	while (counter < argc)
 	{
-		(*array)[counter] = ft_atoi(argv[counter]);
+		(*array)[(counter - 1)] = ft_atoi(argv[counter]);
 		counter++;
 	}
 }
@@ -64,10 +64,15 @@ int	main(int argc, char **argv)
 
 	if (!ft_check_input(argv, argc))
 		return (ft_exit_error());
+	ft_putstr_fd("Input check OK\n", 1);
 	array = malloc(sizeof(int) * argc);
 	ft_fill_array(&array, argv, argc);
 	ft_free_array(&array, 0, 0);
 	if (!ft_check_duplicate(array, argc))
 		return (ft_free_array(NULL, 1, 1));
+	ft_putstr_fd("DUP check OK\n", 1);
+	if (ft_check_is_sorted(array, argc))
+		return (1);
+	ft_putstr_fd("Not sorted.", 1);
 	return (0);
 }

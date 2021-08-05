@@ -12,6 +12,8 @@ SRC = main.c
 
 VALIDATION = ./validation/ft_check_input.c ./validation/ft_check_duplicate.c
 
+SORTED = ./sorting/ft_check_sorted.c
+
 all: $(NAME)
 
 libft:
@@ -19,10 +21,10 @@ libft:
 	mv ./libft/${LIBFTNAME} ${LIBFTNAME}
 
 ${NAME}: libft
-	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${LIBFTNAME} -o ${PUSH_SWAP}
+	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${SORTED} ${LIBFTNAME} -o ${PUSH_SWAP}
 
 bonus: libft
-	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${LIBFTNAME} -o ${PUSH_SWAP}
+	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${SORTED} ${LIBFTNAME} -o ${PUSH_SWAP}
 
 clean:
 	rm -rf *.o
