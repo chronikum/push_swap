@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/04 14:42:04 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/05 09:38:33 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 **	Exit with error
 */
-static int ft_exit_error(void)
+static int	ft_exit_error(void)
 {
 	ft_putstr_fd("Error", 2);
 	return (1);
@@ -26,24 +26,26 @@ static int ft_exit_error(void)
 **	free it as soon as called.
 **	Returns the integer supplied with.
 */
-static int	ft_free_array(int **array_d, int ret)
+static int	ft_free_array(int **array_d, int ret, int err)
 {
-	static int **array;
-	
+	static int	**array;
+
+	if (err)
+		ft_exit_error();
 	if (array_d)
 		array = array_d;
 	if (!array_d && array)
-		free(array);
+		free((*array));
 	return (ret);
 }
 
 /*
 **	Fill the array with the given values.
 */
-void ft_fill_array(int **array, char **argv, int argc)
+void	ft_fill_array(int **array, char **argv, int argc)
 {
-	int counter;
-	
+	int	counter;
+
 	counter = 1;
 	while (counter < argc)
 	{
@@ -58,15 +60,14 @@ void ft_fill_array(int **array, char **argv, int argc)
 */
 int	main(int argc, char **argv)
 {
-	int *array;
-	
-	if (argc > 0)
-	{
-		if (!ft_check_input(argv, argc))
-			return ft_exit_error();
-		array = malloc(sizeof(int) * argc);
-		ft_fill_array(&array, argv, argc);
-		ft_free_array(&array, 0);
-	}
+	int	*array;
+
+	if (!ft_check_input(argv, argc))
+		return (ft_exit_error());
+	array = malloc(sizeof(int) * argc);
+	ft_fill_array(&array, argv, argc);
+	ft_free_array(&array, 0, 0);
+	if (!ft_check_duplicate(array, argc))
+		return (ft_free_array(NULL, 1, 1));
 	return (0);
 }

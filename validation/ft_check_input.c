@@ -6,32 +6,32 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:39:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/04 15:05:35 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/05 09:32:04 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_push_swap.h"
-
 /*
 **	Checks the array to be only digits
 */
 static int	ft_check_digits(char **argv, int argc)
 {
-	int count;
-	int ccount;
-	char *current;
-	
+	int		count;
+	int		ccount;
+	char	*current;
+
 	count = 1;
 	while (count < argc && (argv[count]))
 	{
 		ccount = 0;
-		current = argv[count]; 
+		current = argv[count];
 		while (current[ccount])
 		{
-			if ((current[ccount] == '-' || current[ccount] == '+') && ccount == 0)
+			if ((current[ccount] == '-'
+					|| current[ccount] == '+') && ccount == 0)
 				ccount++;
 			if (!ft_isdigit(current[ccount]))
-				return (0);	
+				return (0);
 			ccount++;
 		}
 		count++;
@@ -45,6 +45,8 @@ static int	ft_check_digits(char **argv, int argc)
 */
 int	ft_check_input(char **argv, int argc)
 {
+	if (argc <= 1)
+		return (0);
 	if (!ft_check_digits(argv, argc))
 		return (0);
 	return (1);

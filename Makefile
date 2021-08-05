@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c
 
-VALIDATION = ./validation/ft_check_input.c
+VALIDATION = ./validation/ft_check_input.c ./validation/ft_check_duplicate.c
 
 all: $(NAME)
 
