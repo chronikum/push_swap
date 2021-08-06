@@ -16,11 +16,11 @@ SORTED = ./sorting/ft_check_sorted.c
 
 all: $(NAME)
 
-libft:
+${LIBFTNAME}:
 	make -C ./libft/
-	mv ./libft/${LIBFTNAME} ${LIBFTNAME}
+	mv ./libft/${LIBFTNAME} ./${LIBFTNAME}
 
-${NAME}: libft
+${NAME}: ${LIBFTNAME}
 	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${SORTED} ${LIBFTNAME} -o ${PUSH_SWAP}
 
 bonus: libft
@@ -30,7 +30,7 @@ clean:
 	rm -rf *.o
 
 fclean: clean
+	rm -f ${PUSH_SWAP} ${LIBFTNAME}
 	make -C libft fclean
-	rm -f ${PUSH_SWAP}
 
-re: fclean ${NAME}
+re: fclean ${LIBFTNAME} ${NAME}
