@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/10 15:27:25 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/10 15:31:35 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,43 @@ static int	ft_exit_error(void)
 	return (1);
 }
 
-// static int ft_number_pos(char **argv, int argc, int pos)
-// {
-// 	int total;
-// 	int ncount;
-// 	char **split;
-// 	char *next;
-// 	int inner;
+static int ft_number_pos(char **argv, int argc, int pos)
+{
+	int total;
+	int ncount;
+	char **split;
+	char *next;
+	int inner;
 
-// 	ncount = 0;
-// 	total = 0;
-// 	inner = 0;
-// 	while (ncount < (argc - 1))
-// 	{
-// 		next = argv[ncount + 1];
-// 		if (ft_strchr(next, ' '))
-// 		{
-// 			split = ft_split(next, ' ');
-// 			while (split[inner] != NULL)
-// 			{
-// 				if ((total + inner) == pos)
-// 					return ft_atoi(split[inner]);
-// 				inner++;
-
-// 			}
-// 			total += inner;
-// 			free(split);
-// 		}
-// 		else
-// 			total++;
-// 		if (total == pos)
-// 			return ft_atoi(argv[(ncount + 1)]);
-// 		ncount++;
-// 	}
-// 	return (total);
-// }
+	ncount = 0;
+	total = 0;
+	inner = 0;
+	while (ncount < (argc - 1))
+	{
+		inner = 0;
+		next = argv[ncount + 1];
+		if (ft_strchr(next, ' '))
+		{
+			split = ft_split(next, ' ');
+			while (split[inner] != NULL)
+			{
+				if (pos == (total + inner))
+					return (ft_atoi(split[inner]));
+				inner++;
+			}
+			total += inner;
+			free(split);
+		}
+		else
+		{
+			if (total == pos)
+				return (ft_atoi(argv[ncount + 1]));
+			total++;
+		}
+		ncount++;
+	}
+	return (total);
+}
 
 static int ft_number_total(char **argv, int argc)
 {
@@ -77,18 +79,12 @@ static int ft_number_total(char **argv, int argc)
 		{
 			split = ft_split(next, ' ');
 			while (split[inner] != NULL)
-			{
-				printf("%d : %s SPLIT\n",total + inner, split[inner]);
 				inner++;
-			}
 			total += inner;
 			free(split);
 		}
 		else
-		{
-			printf("%d : %s\n",total, argv[ncount + 1]);
 			total++;
-		}
 		ncount++;
 	}
 	return (total);
@@ -130,7 +126,7 @@ void	ft_fill_array(t_pw **arr, char **argv, int argc)
 	while (counter < total)
 	{
 		// (*arr)->arr[((counter - 1) + offset)] = ft_atoi(argv[counter]);
-		// ft_putnbr_fd(ft_number_pos(argv, argc, counter), 1);
+		ft_putnbr_fd(ft_number_pos(argv, argc, counter), 1);
 		counter++;
 	}
 	// (*arr)->count = total;
