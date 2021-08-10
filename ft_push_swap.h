@@ -7,6 +7,7 @@ typedef struct	s_pw
 {
 	int	*arr;
 	int count;
+	int argc;
 }	t_pw;
 
 int			ft_check_input(char **argv, int argc);
