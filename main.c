@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/10 15:31:35 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/13 19:12:04 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,10 @@ void	ft_fill_array(t_pw **arr, char **argv, int argc)
 	counter = 0;
 	while (counter < total)
 	{
-		// (*arr)->arr[((counter - 1) + offset)] = ft_atoi(argv[counter]);
-		ft_putnbr_fd(ft_number_pos(argv, argc, counter), 1);
+		(*arr)->arr[((counter - 1))] = ft_number_pos(argv, argc, counter);
 		counter++;
 	}
-	// (*arr)->count = total;
+	(*arr)->count = total;
 }
 
 /*
@@ -144,7 +143,6 @@ int	main(int argc, char **argv)
 		return (ft_exit_error());
 	ft_putstr_fd("Input check OK\n", 1);
 	ft_fill_array(&arr, argv, argc);
-	return 0;
 	ft_free_array(&arr, 0, 0);
 	if (!ft_check_duplicate(arr))
 		return (ft_free_array(NULL, 1, 1));

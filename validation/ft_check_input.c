@@ -6,37 +6,71 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:39:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/10 15:41:54 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/13 19:48:53 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_push_swap.h"
+
+
+/*
+**	Check if char array is number
+*/
+static int	ft_is_number(char *c)
+{
+	int i;
+
+	i = 0;
+	while (c[i])
+	{
+		while (c[i] == ' ')
+			i++;
+		if ((c[i] == '-' || c[i] == '+'))
+			i++;
+		if (ft_isdigit(c[i]))
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 /*
 **	Checks the array to be only digits
+**	@TODO: CHECK IF
 */
 static int	ft_check_digits(char **argv, int argc)
 {
-	int		count;
-	int		ccount;
-	char	*current;
+	int total;
+	int ncount;
+	char **split;
+	char *next;
+	int inner;
 
-	count = 1;
-	while (count < argc && (argv[count]))
+	ncount = 0;
+	total = 0;
+	inner = 0;
+	while (ncount < (argc - 1))
 	{
-		ccount = 0;
-		current = argv[count];
-		while (current[ccount])
+		inner = 0;
+		next = argv[ncount + 1];
+		if (ft_strchr(next, ' '))
 		{
-			if ((current[ccount] == '-'
-					|| current[ccount] == '+') && ccount == 0)
-				ccount++;
-			while (current[ccount] == ' ')
-				ccount++;
-			if (!ft_isdigit(current[ccount]))
-				return (0);
-			ccount++;
+			split = ft_split(next, ' ');
+			while (split[inner] != NULL)
+			{
+				if (!ft_is_number(split[inner]))
+					return (0);
+				inner++;
+			}
+			total += inner;
+			free(split);
 		}
-		count++;
+		else
+			total++;
+		if (!ft_is_number(argv[ncount + 1]))
+			return (0);
+		ncount++;
 	}
 	return (1);
 }
