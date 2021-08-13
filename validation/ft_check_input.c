@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:39:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/13 19:48:53 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/13 19:56:47 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static int	ft_check_digits(char **argv, int argc)
 	int total;
 	int ncount;
 	char **split;
-	char *next;
 	int inner;
 
 	ncount = 0;
@@ -53,24 +52,21 @@ static int	ft_check_digits(char **argv, int argc)
 	while (ncount < (argc - 1))
 	{
 		inner = 0;
-		next = argv[ncount + 1];
-		if (ft_strchr(next, ' '))
+		if (ft_strchr(argv[ncount + 1], ' '))
 		{
-			split = ft_split(next, ' ');
+			split = ft_split(argv[ncount + 1], ' ');
 			while (split[inner] != NULL)
 			{
-				if (!ft_is_number(split[inner]))
+				if (!ft_is_number(split[inner++]))
 					return (0);
-				inner++;
 			}
 			total += inner;
 			free(split);
 		}
 		else
 			total++;
-		if (!ft_is_number(argv[ncount + 1]))
+		if (!ft_is_number(argv[++ncount]))
 			return (0);
-		ncount++;
 	}
 	return (1);
 }
