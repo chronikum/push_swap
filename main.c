@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/13 19:12:04 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/14 14:52:14 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,34 @@ static int	ft_exit_error(void)
 
 static int ft_number_pos(char **argv, int argc, int pos)
 {
-	int total;
-	int ncount;
 	char **split;
 	char *next;
-	int inner;
+	int i[3];
 
-	ncount = 0;
-	total = 0;
-	inner = 0;
-	while (ncount < (argc - 1))
+	ft_init_helper_array(i);
+	while (i[0] < (argc - 1))
 	{
-		inner = 0;
-		next = argv[ncount + 1];
+		i[2] = 0;
+		next = argv[i[0] + 1];
 		if (ft_strchr(next, ' '))
 		{
 			split = ft_split(next, ' ');
-			while (split[inner] != NULL)
+			while (split[i[2]++] != NULL)
 			{
-				if (pos == (total + inner))
-					return (ft_atoi(split[inner]));
-				inner++;
+				if (pos == (i[1] + (i[2] - 1)))
+					return (ft_atoi(split[(i[2] - 1)]));
 			}
-			total += inner;
+			i[1] += (i[2] - 1);
 			free(split);
 		}
 		else
 		{
-			if (total == pos)
-				return (ft_atoi(argv[ncount + 1]));
-			total++;
+			if (i[1]++ == pos)
+				return (ft_atoi(argv[i[0] + 1]));
 		}
-		ncount++;
+		i[0]++;
 	}
-	return (total);
+	return (i[1]);
 }
 
 static int ft_number_total(char **argv, int argc)
@@ -125,7 +119,8 @@ void	ft_fill_array(t_pw **arr, char **argv, int argc)
 	counter = 0;
 	while (counter < total)
 	{
-		(*arr)->arr[((counter - 1))] = ft_number_pos(argv, argc, counter);
+		(*arr)->arr[((counter))] = ft_number_pos(argv, argc, counter);
+		printf("%d : %d \n", counter, ft_number_pos(argv, argc, counter));
 		counter++;
 	}
 	(*arr)->count = total;
