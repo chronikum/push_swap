@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/14 14:52:14 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/14 15:06:31 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,21 @@
 #include <stdio.h>
 
 /*
-**	Exit with error
+**	Gets a number at a certain position within the
+**	inputted string. Handles quotes arguments too.
 */
-static int	ft_exit_error(void)
-{
-	ft_putstr_fd("Error", 2);
-	return (1);
-}
-
 static int ft_number_pos(char **argv, int argc, int pos)
 {
 	char **split;
-	char *next;
 	int i[3];
 
 	ft_init_helper_array(i);
 	while (i[0] < (argc - 1))
 	{
 		i[2] = 0;
-		next = argv[i[0] + 1];
-		if (ft_strchr(next, ' '))
+		if (ft_strchr(argv[i[0] + 1], ' '))
 		{
-			split = ft_split(next, ' ');
+			split = ft_split(argv[i[0] + 1], ' ');
 			while (split[i[2]++] != NULL)
 			{
 				if (pos == (i[1] + (i[2] - 1)))
@@ -52,36 +45,6 @@ static int ft_number_pos(char **argv, int argc, int pos)
 		i[0]++;
 	}
 	return (i[1]);
-}
-
-static int ft_number_total(char **argv, int argc)
-{
-	int total;
-	int ncount;
-	char **split;
-	char *next;
-	int inner;
-
-	ncount = 0;
-	total = 0;
-	inner = 0;
-	while (ncount < (argc - 1))
-	{
-		inner = 0;
-		next = argv[ncount + 1];
-		if (ft_strchr(next, ' '))
-		{
-			split = ft_split(next, ' ');
-			while (split[inner] != NULL)
-				inner++;
-			total += inner;
-			free(split);
-		}
-		else
-			total++;
-		ncount++;
-	}
-	return (total);
 }
 
 /*
