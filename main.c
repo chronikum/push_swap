@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/14 15:24:57 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/14 15:26:40 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ft_fill_array(t_pw **arr, char **argv, int argc)
 	while (counter < total)
 	{
 		(*arr)->arr[((counter))] = ft_number_pos(argv, argc, counter);
-		printf("%d : %d \n", counter, ft_number_pos(argv, argc, counter));
+		// printf("%d : %d \n", counter, ft_number_pos(argv, argc, counter));
 		counter++;
 	}
 	(*arr)->count = total;

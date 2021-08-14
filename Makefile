@@ -4,7 +4,7 @@ NAME = push_swap
 
 LIBFTNAME = libft.a
 
-PUSH_SWAP = push_swap.a
+PUSH_SWAP = push_swap
 
 CFLAGS = -Wall -Wextra -Werror
 
