@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 09:40:06 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/05 10:20:18 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/13 20:16:56 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 */
 int	ft_check_is_sorted(t_pw *arr)
 {
-	int i;
-	int last;
+	int	i;
+	int	last;
 
 	i = 0;
 	last = arr->arr[0];

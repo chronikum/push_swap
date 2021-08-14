@@ -6,19 +6,18 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:39:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/13 19:56:47 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/13 20:18:04 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_push_swap.h"
-
 
 /*
 **	Check if char array is number
 */
 static int	ft_is_number(char *c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (c[i])
@@ -41,31 +40,29 @@ static int	ft_is_number(char *c)
 */
 static int	ft_check_digits(char **argv, int argc)
 {
-	int total;
-	int ncount;
-	char **split;
-	int inner;
+	char	**split;
+	int		i[3];
 
-	ncount = 0;
-	total = 0;
-	inner = 0;
-	while (ncount < (argc - 1))
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
+	while (i[0] < (argc - 1))
 	{
-		inner = 0;
-		if (ft_strchr(argv[ncount + 1], ' '))
+		i[2] = 0;
+		if (ft_strchr(argv[i[0] + 1], ' '))
 		{
-			split = ft_split(argv[ncount + 1], ' ');
-			while (split[inner] != NULL)
+			split = ft_split(argv[i[0] + 1], ' ');
+			while (split[i[2]] != NULL)
 			{
-				if (!ft_is_number(split[inner++]))
+				if (!ft_is_number(split[i[2]++]))
 					return (0);
 			}
-			total += inner;
+			i[1] += i[2];
 			free(split);
 		}
 		else
-			total++;
-		if (!ft_is_number(argv[++ncount]))
+			i[1]++;
+		if (!ft_is_number(argv[++i[0]]))
 			return (0);
 	}
 	return (1);

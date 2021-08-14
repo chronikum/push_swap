@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 09:29:41 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/05 10:18:37 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/13 20:17:50 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@
 */
 int	ft_check_duplicate(t_pw *arr)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
 	while (i < (arr->count - 1))
 	{
-		ft_putstr_fd("\n", 1);
-		ft_putnbr_fd(arr->arr[i], 1);
 		j = (i + 1);
-		while (j < arr->count) {
+		while (j < arr->count)
+		{
 			if (arr->arr[i] == arr->arr[j])
 				return (0);
 			j++;
