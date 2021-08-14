@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:39:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/14 14:50:10 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/14 15:09:54 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 **	Simply inits array with size three with zeros
 */
-void ft_init_helper_array(int i[3])
+void	ft_init_helper_array(int i[3])
 {
 	i[0] = 0;
 	i[1] = 0;
