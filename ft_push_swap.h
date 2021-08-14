@@ -4,11 +4,11 @@
 # include "libft/libft.h"
 # include <stdio.h>
 
-typedef struct	s_pw
+typedef struct s_pw
 {
 	int	*arr;
-	int count;
-	int argc;
+	int	count;
+	int	argc;
 }	t_pw;
 
 int			ft_check_input(char **argv, int argc);

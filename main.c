@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/14 15:23:49 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/14 15:24:57 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 **	Gets a number at a certain position within the
 **	inputted string. Handles quotes arguments too.
 */
-static int ft_number_pos(char **argv, int argc, int pos)
+static int	ft_number_pos(char **argv, int argc, int pos)
 {
-	char **split;
-	int i[3];
+	char	**split;
+	int		i[3];
 
 	ft_init_helper_array(i);
 	while (i[0] < (argc - 1))
@@ -73,7 +73,7 @@ static int	ft_free_array(t_pw **array_d, int ret, int err)
 void	ft_fill_array(t_pw **arr, char **argv, int argc)
 {
 	int	counter;
-	int total;
+	int	total;
 
 	total = ft_number_total(argv, argc);
 	(*arr) = malloc(sizeof(t_pw));
@@ -94,7 +94,7 @@ void	ft_fill_array(t_pw **arr, char **argv, int argc)
 */
 int	main(int argc, char **argv)
 {
-	t_pw *arr;
+	t_pw	*arr;
 
 	if (!ft_check_input(argv, argc))
 		return (ft_exit_error());
