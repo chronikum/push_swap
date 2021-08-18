@@ -7,8 +7,10 @@
 typedef struct s_pw
 {
 	int	*arr;
+	int	*or_arr;
 	int	count;
 	int	argc;
+	t_list *ops;
 }	t_pw;
 
 int			ft_check_input(char **argv, int argc);

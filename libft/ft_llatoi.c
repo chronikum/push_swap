@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_llatoi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 15:13:18 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/18 13:39:05 by jfritz           ###   ########.fr       */
+/*   Created: 2021/08/18 13:42:27 by jfritz            #+#    #+#             */
+/*   Updated: 2021/08/18 13:42:32 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	whitespace(char c)
 		|| (c == '\v') || (c == '\f') || (c == '\r') || (c == ' '));
 }
 
-static int	ft_skip_plus_minus(const char *str, int p, int *m)
+static long long	ft_skip_plus_minus(const char *str, long long p, long long *m)
 {
 	int	a;
 
@@ -40,11 +40,11 @@ static int	ft_skip_plus_minus(const char *str, int p, int *m)
 	return (p + a);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_ll_atoi(const char *str)
 {
-	int		i;
-	int		r;
-	int		m;
+	long long		i;
+	long long		r;
+	long long		m;
 
 	i = 0;
 	r = 0;
