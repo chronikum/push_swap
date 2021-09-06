@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_pa.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/22 09:51:03 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/06 13:23:47 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/06 11:50:40 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/06 12:01:11 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_push_swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_pa(t_pw **arr)
 {
-	if (lst)
+	int *c;
+
+	if (ft_lstsize((*(*arr)->b)) != 0)
 	{
-		if (lst)
-		{
-			new->next = *lst;
-			(*lst) = new;
-		}
-		else
-			*lst = new;
+		c = (*(*arr)->b)->content;
+		ft_lstadd_front((*arr)->a, ft_lstnew(c));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:25:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/06 10:13:59 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:19:24 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 /*
 **	Fills the linked list a in the t_pw struct with the numbers
-**	of int array arr
+**	of int array arr. Also mallocs the empty b stack.
 */
 void	ft_arr_lnklst(t_pw **pw)
 {
 	int i;
 
 	i = 0;
+	(*pw)->b = malloc(sizeof(t_list));
 	while (i < (*pw)->count)
 	{
 		if (i == 0)

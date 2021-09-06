@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/06 11:33:31 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:19:02 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 	total = ft_number_total(argv, argc);
 	(*arr) = malloc(sizeof(t_pw));
 	(*arr)->arr = malloc(sizeof(int) * total);
-	(*arr)->a = malloc(sizeof(int) * total);
 	(*arr)->or_arr = malloc(sizeof(int) * total);
 	counter = 0;
 	while (counter < total)
@@ -122,6 +121,23 @@ void print_stack_a(t_pw *pw)
 	int *x;
 
 	t = (*pw->a);
+	ft_putendl_fd("STACK A", 1);
+	while (t)
+	{
+		x = t->content;
+		ft_putnbr_fd((*x), 1);
+		ft_putstr_fd("\n", 1);
+		t = t->next;
+	}
+}
+
+void print_stack_b(t_pw *pw)
+{
+	t_list *t;
+	int *x;
+
+	t = (*pw->b);
+	ft_putendl_fd("STACK B", 1);
 	while (t)
 	{
 		x = t->content;
@@ -153,6 +169,8 @@ int	main(int argc, char **argv)
 	ft_putstr_fd("Not sorted.", 1);
 	ft_arr_lnklst(&arr);
 	ft_sa(&arr);
+	ft_pb(&arr);
 	print_stack_a(arr);
+	print_stack_b(arr);
 	return (0);
 }
