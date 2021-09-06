@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:17:46 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/06 09:56:00 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/06 11:36:42 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 */
 void	ft_sb(t_pw **arr)
 {
-	if (!((*arr)->count > 1))
+	int *t;
+
+	if (!((*arr)->count > 1 || ft_lstsize((*(*arr)->b)) < 1))
 		return ;
+	t = (*(*arr)->b)->content;
+	(*(*arr)->b)->content = (*(*arr)->b)->next->content;
+	(*(*arr)->b)->next->content = t;
 }
