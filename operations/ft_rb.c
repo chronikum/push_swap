@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_rb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 15:58:58 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 11:28:02 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/07 11:33:18 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/07 11:34:10 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+/*
+**	Move every element of a up by one index. (stack b)
+**	The first element becomes the last one.
+*/
+void	ft_rb(t_pw **arr)
 {
-	size_t	i;
+	t_list *a;
+	int *f;
 
-	i = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
+	a = (*(*arr)->b);
+	f = (*(*arr)->b)->content;
+	(*(*arr)->b) = (*(*arr)->b)->next;
+	ft_lstadd_back((*arr)->b, ft_lstnew(f));
 }

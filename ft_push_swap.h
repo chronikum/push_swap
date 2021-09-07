@@ -33,5 +33,5 @@ void		ft_ss(t_pw **arr);
 void		ft_pa(t_pw **arr);
 void		ft_pb(t_pw **arr);
 void		ft_ra(t_pw **arr);
-
+void		ft_rb(t_pw **arr);
 #endif

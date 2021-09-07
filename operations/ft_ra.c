@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 14:23:24 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/06 14:30:40 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 11:32:58 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 void	ft_ra(t_pw **arr)
 {
 	t_list *a;
+	int *f;
 
 	a = (*(*arr)->a);
-	while ((*(*arr)->a))
-	{
-		a = a->next;
-	}
+	f = (*(*arr)->a)->content;
+	(*(*arr)->a) = (*(*arr)->a)->next;
+	ft_lstadd_back((*arr)->a, ft_lstnew(f));
 }

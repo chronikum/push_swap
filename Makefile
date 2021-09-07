@@ -15,7 +15,8 @@ VALIDATION = ./validation/ft_check_input.c ./validation/ft_check_duplicate.c ./h
 
 SORTED = ./sorting/ft_check_sorted.c
 
-OPERATIONS = ./operations/ft_sa.c ./operations/ft_sb.c ./operations/ft_ss.c ./operations/ft_pa.c ./operations/ft_pb.c ./operations/ft_ra.c
+OPERATIONS = ./operations/ft_sa.c ./operations/ft_sb.c ./operations/ft_ss.c ./operations/ft_pa.c ./operations/ft_pb.c ./operations/ft_ra.c \
+./operations/ft_rb.c
 
 all: $(NAME)
 
