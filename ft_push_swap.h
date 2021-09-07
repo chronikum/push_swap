@@ -9,6 +9,7 @@ typedef struct s_pw
 	int	*arr;
 	t_val **a;
 	t_val **b;
+	int started_b;
 	int	*or_arr;
 	int	count;
 	int	argc;

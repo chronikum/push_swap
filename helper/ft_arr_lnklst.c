@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:25:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 15:41:24 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 18:02:26 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	ft_arr_lnklst(t_pw **pw)
 	int i;
 
 	i = 0;
-	(*pw)->b = malloc(sizeof(t_val**));
+	(*pw)->b = malloc(sizeof(t_val));
+	// (*(*pw)->b) = ft_lstvalnew(0);
+	(*pw)->started_b = 0;
 	while (i < (*pw)->count)
 	{
 		if (i == 0)

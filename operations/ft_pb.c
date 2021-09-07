@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:59:02 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 16:12:31 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 18:02:18 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	ft_pb(t_pw **arr)
 {
+	t_val *r;
+
 	if (ft_lstvalsize((*(*arr)->a)) != 0)
 	{
-		// t = (*(*arr)->a)->val;
-		// ft_putstr_fd("TEST MICH", 1);
-		// (*(*arr)->a) = (*(*arr)->a)->next;
+		r = (*(*arr)->a);
+		ft_lstvaladd_front((*arr)->b, ft_lstvalnew(r->value));
+		(*(*arr)->a) = (*(*arr)->a)->next;
 	}
 }

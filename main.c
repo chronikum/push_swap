@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 16:33:52 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 17:57:21 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void print_stack_a(t_pw *pw)
 	int x;
 
 	t = (*pw->a);
+	ft_putendl_fd("STACK A", 1);
 	while (t)
 	{
 		x = t->value;
@@ -169,12 +170,12 @@ int	main(int argc, char **argv)
 	ft_putstr_fd("Not sorted.", 1);
 	ft_arr_lnklst(&arr);
 	// ft_sa(&arr);
-	// ft_pb(&arr);
+	ft_pb(&arr);
 	// ft_pa(&arr);
 	// ft_ra(&arr);
-	ft_rra(&arr);
+	// ft_rra(&arr);
 	// ft_rb(&arr);
 	print_stack_a(arr);
-	// print_stack_b(arr);
+	print_stack_b(arr);
 	return (0);
 }
