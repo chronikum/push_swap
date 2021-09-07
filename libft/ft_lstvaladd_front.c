@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstindex.c                                      :+:      :+:    :+:   */
+/*   ft_lstvaladd_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/07 11:42:26 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 11:43:57 by jfritz           ###   ########.fr       */
+/*   Created: 2021/06/22 09:51:03 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/07 15:32:20 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstindex(t_list *lst, int index)
+void	ft_lstvaladd_front(t_val **lst, t_val *new)
 {
-	int i;
-
-	i = 0;
-	t_list	*last;
-
-	last = lst;
-	while (lst)
+	if (lst)
 	{
-		last = lst;
-		lst = lst->next;
-		if (i == index)
-			return (last);
-		i++;
+		if (lst)
+		{
+			new->next = *lst;
+			(*lst) = new;
+		}
+		else
+			*lst = new;
 	}
-	return (NULL);
 }

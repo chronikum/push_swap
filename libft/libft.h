@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 11:43:37 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 15:42:27 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_val
+{
+	int				value;
+	void			*content;
+	struct s_val	*next;
+}	t_val;
+
 
 int			ft_atoi(const char *str);
 void		ft_bzero(void *s, size_t n);
@@ -49,6 +57,7 @@ char		*ft_strrchr(const char *s, int c);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
 char		*ft_itoa(int n);
+void		*ft_memdup(const void* mem, size_t size);
 
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
@@ -71,7 +80,6 @@ int			ft_lstsize(t_list *lst);
 void		ft_lstdelone(t_list *lst, void (*del)(void*));
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstnew(void *content);
-t_list		*ft_lstindex(t_list *lst, int index);
 
 void		ft_putunbr_fd(unsigned int n, int fd);
 void		ft_putunlong(unsigned long n, int fd);
@@ -82,4 +90,16 @@ char		ft_getlastchar(char *str);
 int			ft_inset(char c, char const *set);
 int			ft_recursive_power(int base, int n);
 long long	ft_ll_atoi(const char *str);
+
+t_val		*ft_lstvalindex(t_val *lst, int index);
+t_val		*ft_lstvalnew(int value);
+void		ft_lstvaladd_back(t_val **lst, t_val *new);
+void		ft_lstvaladd_front(t_val **lst, t_val *new);
+void		ft_lstvalclear(t_val **lst, void (*del)(void*));
+void		ft_lstvaliter(t_val *lst, void (*f)(void *));
+t_val		*ft_lstvalmap(t_val *lst, void *(*f)(void *), void (*del)(void *));
+int			ft_lstvalsize(t_val *lst);
+void		ft_lstvaldelone(t_val *lst, void (*del)(void*));
+t_val		*ft_lstvallast(t_val *lst);
+
 #endif

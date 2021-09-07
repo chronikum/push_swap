@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 11:55:27 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 15:41:02 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 	(*arr) = malloc(sizeof(t_pw));
 	(*arr)->arr = malloc(sizeof(int) * total);
 	(*arr)->or_arr = malloc(sizeof(int) * total);
+	(*arr)->a = malloc(sizeof(t_val *));
 	counter = 0;
 	while (counter < total)
 	{
@@ -117,31 +118,30 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 
 void print_stack_a(t_pw *pw)
 {
-	t_list *t;
-	int *x;
+	t_val *t;
+	int x;
 
 	t = (*pw->a);
-	ft_putendl_fd("STACK A", 1);
 	while (t)
 	{
-		x = t->content;
-		ft_putnbr_fd((*x), 1);
+		x = t->value;
 		ft_putstr_fd("\n", 1);
+		ft_putnbr_fd(x, 1);
 		t = t->next;
 	}
 }
 
 void print_stack_b(t_pw *pw)
 {
-	t_list *t;
-	int *x;
+	t_val *t;
+	int x;
 
 	t = (*pw->b);
 	ft_putendl_fd("STACK B", 1);
 	while (t)
 	{
-		x = t->content;
-		ft_putnbr_fd((*x), 1);
+		x = t->value;
+		ft_putnbr_fd(x, 1);
 		ft_putstr_fd("\n", 1);
 		t = t->next;
 	}
@@ -170,10 +170,10 @@ int	main(int argc, char **argv)
 	ft_arr_lnklst(&arr);
 	ft_sa(&arr);
 	ft_pb(&arr);
-	ft_pb(&arr);
-	ft_ra(&arr);
-	ft_rb(&arr);
+	// ft_pa(&arr);
+	// ft_ra(&arr);
+	// ft_rb(&arr);
 	print_stack_a(arr);
-	print_stack_b(arr);
+	// print_stack_b(arr);
 	return (0);
 }

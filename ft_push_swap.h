@@ -7,8 +7,8 @@
 typedef struct s_pw
 {
 	int	*arr;
-	t_list **a;
-	t_list **b;
+	t_val **a;
+	t_val **b;
 	int	*or_arr;
 	int	count;
 	int	argc;

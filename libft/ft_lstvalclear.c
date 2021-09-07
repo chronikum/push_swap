@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arr_lnklst.c                                    :+:      :+:    :+:   */
+/*   ft_lstvalclear.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 09:25:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 15:41:24 by jfritz           ###   ########.fr       */
+/*   Created: 2021/06/22 09:27:19 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/07 15:31:54 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_push_swap.h"
+#include "libft.h"
 
-/*
-**	Fills the linked list a in the t_pw struct with the numbers
-**	of int array arr. Also mallocs the empty b stack.
-*/
-void	ft_arr_lnklst(t_pw **pw)
+void	ft_lstvalclear(t_val **lst, void (*del)(void*))
 {
-	t_val *a;
-	int i;
+	t_val	*current;
 
-	i = 0;
-	(*pw)->b = malloc(sizeof(t_val**));
-	while (i < (*pw)->count)
+	while (*lst)
 	{
-		if (i == 0)
-			a = ft_lstvalnew((int) (*pw)->arr[0]);
-		else
-			ft_lstvaladd_back(&a, ft_lstvalnew((int) (*pw)->arr[i]));
-		i++;
+		current = *lst;
+		*lst = (*lst)->next;
+		ft_lstvaldelone(current, del);
 	}
-	(*pw)->a = &a;
 }
