@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 15:42:27 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 16:31:32 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_val
 	int				value;
 	void			*content;
 	struct s_val	*next;
+	struct s_val	*last;
 }	t_val;
 
 

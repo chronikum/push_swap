@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 15:41:02 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 16:33:52 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,10 +168,11 @@ int	main(int argc, char **argv)
 		return (ft_free_array(NULL, 0, 0));
 	ft_putstr_fd("Not sorted.", 1);
 	ft_arr_lnklst(&arr);
-	ft_sa(&arr);
-	ft_pb(&arr);
+	// ft_sa(&arr);
+	// ft_pb(&arr);
 	// ft_pa(&arr);
 	// ft_ra(&arr);
+	ft_rra(&arr);
 	// ft_rb(&arr);
 	print_stack_a(arr);
 	// print_stack_b(arr);

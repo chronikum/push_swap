@@ -6,7 +6,7 @@ LIBFTNAME = libft.a
 
 PUSH_SWAP = push_swap
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = main.c
 

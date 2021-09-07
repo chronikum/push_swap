@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:38:31 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 15:44:04 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 16:37:39 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@
 */
 void	ft_rra(t_pw **arr)
 {
+	t_val *l;
 	int size;
+	t_val *last;
 	t_val *prelast;
-	size = ft_lstvalsize((*(*arr)->a));
-	ft_lstvaladd_front((*arr)->a, ft_lstvalnew(ft_lstvallast((*(*arr)->a))->value));
+	l = (*(*arr)->a);
+	size = ft_lstvalsize(l);
+	last = ft_lstvallast(l);
+	ft_lstvaladd_front((*arr)->a, ft_lstvalnew(last->value));
 	prelast = ft_lstvalindex((*(*arr)->a), (size - 1));
 	prelast->next = NULL;
 }

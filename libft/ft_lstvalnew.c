@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:53:24 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 15:41:48 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 16:33:13 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ t_val	*ft_lstvalnew(int value)
 	if (!s)
 		return (0);
 	s->value = value;
+	s->next = NULL;
+	s->content = NULL;
 	return (s);
 }
