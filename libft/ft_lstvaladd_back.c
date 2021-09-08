@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 09:56:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 15:32:36 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/07 19:01:44 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	ft_lstvaladd_back(t_val **lst, t_val *new)
 
 	if (new)
 	{
-		last = ft_lstvallast(*lst);
+		last = ft_lstvallast((*lst));
 		if (last)
 			last->next = new;
 		else
-			*lst = new;
+			(*lst) = new;
 	}
 }

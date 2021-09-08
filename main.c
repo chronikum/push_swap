@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 18:49:20 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/08 10:41:26 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,11 @@ int	main(int argc, char **argv)
 	ft_pb(&arr);
 	ft_pb(&arr);
 	ft_pb(&arr);
-	// ft_pa(&arr);
-	// ft_ra(&arr);
+	ft_pb(&arr);
+	print_stack_a(arr);
+	ft_pa(&arr);
+	ft_pa(&arr);
+	ft_pa(&arr);
 	// ft_rra(&arr);
 	// ft_rb(&arr);
 	print_stack_a(arr);

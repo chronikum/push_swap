@@ -39,4 +39,7 @@ void		ft_rr(t_pw **arr);
 void		ft_rra(t_pw **arr);
 void		ft_rrb(t_pw **arr);
 void		ft_rrr(t_pw **arr);
+
+
+void		ft_print_stack(t_val *t);
 #endif

@@ -6,20 +6,25 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:50:40 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 18:48:54 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/08 10:41:15 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
+/*
+**	Push the first element of b to the top of a
+*/
 void	ft_pa(t_pw **arr)
 {
-	t_val *r;
+	t_val *a;
+	t_val *b;
 
-	if (ft_lstvalsize((*(*arr)->b)) != 0)
+	a = (*(*arr)->a);
+	b = (*(*arr)->b);
+	if (ft_lstvalsize(b) != 0)
 	{
-		r = (*(*arr)->b);
-		ft_lstvaladd_front((*arr)->a, ft_lstvalnew(r->value));
+		ft_lstvaladd_front((*arr)->a, ft_lstvalnew(b->value));
 		(*(*arr)->b) = (*(*arr)->b)->next;
 	}
 }

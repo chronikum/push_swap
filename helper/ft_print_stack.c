@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pb.c                                            :+:      :+:    :+:   */
+/*   ft_print_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 11:59:02 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/08 10:41:04 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/08 09:57:15 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/08 09:58:19 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
-void	ft_pb(t_pw **arr)
+/*
+**	Prints the given stack
+*/
+void ft_print_stack(t_val *t)
 {
-	t_val *a;
-	t_val *b;
+	int x;
 
-	a = (*(*arr)->a);
-	b = (*(*arr)->b);
-	if (ft_lstvalsize(a) != 0)
+	ft_putendl_fd("PRINTING STACK", 1);
+	while (t)
 	{
-		ft_lstvaladd_front((*arr)->b, ft_lstvalnew(a->value));
-		(*(*arr)->a) = (*(*arr)->a)->next;
+		x = t->value;
+		ft_putnbr_fd(x, 1);
+		ft_putstr_fd("\n", 1);
+		t = t->next;
 	}
+	ft_putendl_fd("PRINTING STACK END", 1);
 }
