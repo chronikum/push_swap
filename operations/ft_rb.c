@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:33:18 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 19:00:59 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/08 10:58:34 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 */
 void	ft_rb(t_pw **arr)
 {
-	t_val *a;
-	int f;
+	t_val *first;
 
-	a = (*(*arr)->b);
-	f = (*(*arr)->b)->value;
+	first = (*(*arr)->b);
+	// ft_lstvaladd_back((*arr)->b, ft_lstvalnew(first->value));
 	(*(*arr)->b) = (*(*arr)->b)->next;
-	ft_lstvaladd_back((*arr)->b, ft_lstvalnew(f));
 }
