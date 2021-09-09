@@ -6,23 +6,21 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:17:46 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/09 14:16:34 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/09 15:53:58 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
 /*
-**	Swap the first two elements in stack a
+**	Swap the first two elements in stack b
 */
 void	ft_sb(t_pw **arr)
 {
-	// int t;
-
-	// t = 123;
-	if (!(ft_lstvalsize((*(*arr)->b)) < 1))
+	int temp;
+	if (!((*arr)->count > 1 || ft_lstvalsize((*(*arr)->b)) < 1))
 		return ;
-	// t = ft_memcpy(t, &(*(*arr)->b)->value, sizeof(int));
-	// (*(*arr)->b) = (*(*arr)->b)->next;
-	// (*(*arr)->b)->next->value = (*t);
+	temp = (*(*arr)->b)->value;
+	(*(*arr)->b)->value = (*(*arr)->b)->next->value;
+	(*(*arr)->b)->next->value = temp;
 }
