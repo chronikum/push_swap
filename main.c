@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/10 09:25:19 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/10 11:55:03 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,13 +169,9 @@ int	main(int argc, char **argv)
 		return (ft_free_array(NULL, 0, 0));
 	ft_putstr_fd("Not sorted.", 1);
 	ft_arr_lnklst(&arr);
-	ft_sa(&arr);
-	ft_pb(&arr);
-	ft_pb(&arr);
-	ft_rra(&arr);
-	ft_rra(&arr);
-	ft_rrb(&arr);
-	ft_sb(&arr);
+	t_val *smallest = ft_get_smallest((*arr->a));
+	ft_putstr_fd("Smallest number:", 1);
+	ft_putnbr_fd(smallest->value, 1);
 
 	print_stack_a(arr);
 	print_stack_b(arr);

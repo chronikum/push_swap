@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_sorted.c                                  :+:      :+:    :+:   */
+/*   ft_check_stack_sorted.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/05 09:40:06 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/10 10:36:16 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/10 10:36:32 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/10 10:43:58 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
-/*
-**	Returns 1 if array is sorted
-*/
-int	ft_check_is_sorted(t_pw *arr)
+int	ft_check_stack_sorted(t_val *l)
 {
-	int	i;
-	int	last;
+	t_val *s;
+	int last;
 
-	i = 0;
-	last = arr->arr[0];
-	while (i < (arr->count - 1))
+	s = l;
+	last = l->value;
+	while (s)
 	{
-		if (last < arr->arr[(i + 1)])
-			last = arr->arr[i + 1];
+		if (last < s->next->value)
+		{
+			last = s->next->value;
+			s = s->next;
+		}
 		else
 			return (0);
-		i++;
+		s = s->next;
 	}
 	return (1);
 }
