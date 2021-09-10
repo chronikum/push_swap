@@ -15,3 +15,6 @@ test.txt
 ./tester
 tester/tester.sh
 push_swap
+checker
+.gitignore
+checker_Mac

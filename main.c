@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/10 12:06:26 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/10 12:29:07 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,26 +159,27 @@ int	main(int argc, char **argv)
 
 	if (!ft_check_input(argv, argc))
 		return (ft_exit_error());
-	ft_putstr_fd("Input check OK\n", 1);
+	// ft_putstr_fd("Input check OK\n", 1);
 	valid = ft_fill_array(&arr, argv, argc);
 	ft_free_array(&arr, 0, 0);
 	if (!ft_check_duplicate(arr) || (valid == 0))
 		return (ft_free_array(NULL, 1, 1));
-	ft_putstr_fd("DUP check OK\n", 1);
+	// ft_putstr_fd("DUP check OK\n", 1);
 	if (ft_check_is_sorted(arr))
 		return (ft_free_array(NULL, 0, 0));
-	ft_putstr_fd("Not sorted.", 1);
+	// ft_putstr_fd("Not sorted.", 1);
 	ft_arr_lnklst(&arr);
-
 	while (ft_lstvalsize((*arr->a)) != 0)
-	{
-		int index = 0;
-		t_val *smallest = ft_get_smallest((*arr->a), &index);
-		while ((*arr->a)->value != smallest->value)
-			ft_ra(&arr);
 		ft_pb(&arr);
+
+	while (ft_lstvalsize((*arr->b)) != 0)
+	{
+		t_val *biggest = ft_get_biggest((*arr->b));
+		while ((*arr->b)->value != biggest->value)
+			ft_rb(&arr);
+		ft_pa(&arr);
 	}
-	print_stack_a(arr);
-	print_stack_b(arr);
+	// print_stack_a(arr);
+	// print_stack_b(arr);
 	return (0);
 }

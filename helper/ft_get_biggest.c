@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pa.c                                            :+:      :+:    :+:   */
+/*   ft_get_biggest.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 11:50:40 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/10 12:17:00 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/10 12:18:21 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/10 12:18:58 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
 /*
-**	Push the first element of b to the top of a
+**	Return the biggest value in the given list
 */
-void	ft_pa(t_pw **arr)
+t_val	*ft_get_biggest(t_val *l)
 {
-	t_val *a;
-	t_val *b;
+	t_val *biggest;
+	t_val *next;
 
-	a = (*(*arr)->a);
-	b = (*(*arr)->b);
-	if (ft_lstvalsize(b) != 0)
+	next = l;
+	biggest = next;
+	while (next)
 	{
-		write(1, "pa\n", 3);
-		ft_lstvaladd_front((*arr)->a, ft_lstvalnew(b->value));
-		(*(*arr)->b) = (*(*arr)->b)->next;
+		if (biggest->value < next->value)
+			biggest = next;
+		next = next->next;
 	}
+
+	return biggest;
 }
