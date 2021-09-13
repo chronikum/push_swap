@@ -40,6 +40,9 @@ void		ft_rra(t_pw **arr);
 void		ft_rrb(t_pw **arr);
 void		ft_rrr(t_pw **arr);
 
+void		ft_pan(t_pw **arr, int amount);
+void		ft_pbn(t_pw **arr, int amount);
+
 int			ft_rstack_index(t_val **stack, int amount, int a);
 
 
