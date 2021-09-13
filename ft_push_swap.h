@@ -40,11 +40,15 @@ void		ft_rra(t_pw **arr);
 void		ft_rrb(t_pw **arr);
 void		ft_rrr(t_pw **arr);
 
+int			ft_rstack_index(t_val **stack, int amount, int a);
+
 
 void		ft_print_stack(t_val *t);
 int			ft_check_stack_sorted(t_val *l);
 
 t_val		*ft_get_smallest(t_val *l);
 t_val		*ft_get_biggest(t_val *l);
+t_val		*ft_biggest_until(t_val *l, int amount);
+int			ft_find_position(t_val *l, int needle);
 
 #endif

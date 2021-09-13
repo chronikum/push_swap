@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:52:10 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/10 09:23:42 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/13 13:42:29 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	ft_rrb(t_pw **arr)
 	{
 		ft_lstvaladd_front((*arr)->b, ft_lstvalnew(ft_lstvallast(l)->value));
 		ft_lstvalindex((*(*arr)->b), (ft_lstvalsize(l) - 1))->next = NULL;
+		write(1, "rrb\n", 4);
 	}
 }

@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rra.c                                           :+:      :+:    :+:   */
+/*   ft_find_position.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/07 11:38:31 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/13 11:27:48 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/13 13:30:38 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/13 13:33:18 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
-/*
-**	Reverse rotate staack a
-**	The last element becomes the first one.
-*/
-void	ft_rra(t_pw **arr)
-{
-	t_val *l;
 
-	l = (*(*arr)->a);
-	if (ft_lstvalsize(l) > 1)
+/*
+**	Returns the index of the searched value
+*/
+int	ft_find_position(t_val *l, int needle)
+{
+	int	i;
+	t_val *next;
+
+	i = 0;
+	next = l;
+	while (next)
 	{
-		ft_lstvaladd_front((*arr)->a, ft_lstvalnew(ft_lstvallast(l)->value));
-		ft_lstvalindex((*(*arr)->a), (ft_lstvalsize(l) - 1))->next = NULL;
+		if (next->value == needle)
+			return (i);
+		next = next->next;
+		i++;
 	}
-	write(1, "rra\n", 4);
+	return -1;
 }
