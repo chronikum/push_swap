@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:17:46 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/10 09:26:03 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/13 13:49:20 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void	ft_sb(t_pw **arr)
 	temp = (*(*arr)->b)->value;
 	(*(*arr)->b)->value = (*(*arr)->b)->next->value;
 	(*(*arr)->b)->next->value = temp;
+	write(1, "sb\n", 3);
 }
