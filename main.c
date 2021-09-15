@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/15 09:23:00 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/15 13:55:57 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,15 +188,34 @@ int	main(int argc, char **argv)
 	int counted;
 	int ccounted;
 	int total;
+	int splitter;
+	int	insert_here;
 	counted = 0;
 	ccounted = 0;
 	total = 0;
+	splitter = 6;
+	insert_here = 0;
+
+	if ((arr->count) > 250)
+		splitter = 5;
 
 	while (total < (arr->count))
 	{
-		while ((ft_lstvalsize((*arr->b)) < (arr->count / 4)))
+		while ((ft_lstvalsize((*arr->b)) < (arr->count / splitter)))
 		{
+			if ((*arr->b))
+			{
+				int searched_position = ft_findpos_list((*arr->b), (*arr->a)->value);
+				// ft_putstr_fd("SEARCHED POSITION: ", 1);
+				// ft_putnbr_fd(searched_position, 1);
+				while (insert_here != searched_position)
+				{
+					ft_rb(&arr);
+					insert_here++;
+				}
+			}
 			ft_pb(&arr);
+			insert_here = 0;
 		}
 		while (ft_lstvalsize((*arr->b)) != 0)
 		{
@@ -211,9 +230,10 @@ int	main(int argc, char **argv)
 			}
 			ft_pa(&arr);
 			total++;
+			insert_here = 0;
 		}
 
-		while (ccounted < (arr->count / 4))
+		while (ccounted < (arr->count / splitter))
 		{
 			ccounted++;
 			ft_rra(&arr);
@@ -221,21 +241,46 @@ int	main(int argc, char **argv)
 		ccounted = 0;
 	}
 
-	while (ft_lstvalsize((*arr->a)) != 0)
-		ft_pb(&arr);
-	while (ft_lstvalsize((*arr->b)) != 0)
-	{
-		t_val *biggest = ft_get_biggest((*arr->b));
-		int position = ft_find_position((*arr->b), biggest->value);
-		while ((*arr->b)->value != biggest->value)
-		{
-			if (position < (ft_lstvalsize((*arr->b)) / 2))
-				ft_rb(&arr);
-			else
-				ft_rrb(&arr);
-		}
-		ft_pa(&arr);
-	}
+
+	// while (ft_lstvalsize((*arr->a)) != 0)
+	// 	ft_pb(&arr);
+
+	// while (ft_lstvalsize(*arr->b) != 0)
+	// {
+	// 	int position;
+	// 	t_val *smallest = ft_get_biggest((*arr->a));
+	// 	if (smallest)
+	// 		position = ft_find_position((*arr->a), smallest->value);
+	// 	else
+	// 		position = -1;
+	// 	if (position == -1)
+	// 		ft_pa(&arr);
+	// 	else
+	// 	{
+	// 		while ((*arr->a)->value != smallest->value)
+	// 		{
+	// 			if (position < (ft_lstvalsize((*arr->a)) / 2))
+	// 				ft_ra(&arr);
+	// 			else
+	// 				ft_rra(&arr);
+	// 		}
+	// 		ft_pa(&arr);
+	// 	}
+	// }
+
+	// while (ft_lstvalsize((*arr->b)) != 0)
+	// {
+	// 	t_val *biggest = ft_get_biggest((*arr->b));
+	// 	int position = ft_find_position((*arr->b), biggest->value);
+	// 	while ((*arr->b)->value != biggest->value)
+	// 	{
+	// 		if (position < (ft_lstvalsize((*arr->b)) / 2))
+	// 			ft_rb(&arr);
+	// 		else
+	// 			ft_rrb(&arr);
+	// 	}
+	// 	ft_pa(&arr);
+	// }
 
 	// ft_putstr_fd("ACTUALLY TOTALED:", 1);
 	// ft_putnbr_fd(counted, 1);

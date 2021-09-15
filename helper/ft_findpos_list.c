@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_biggest_until.c                                 :+:      :+:    :+:   */
+/*   ft_findpos_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 09:40:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/15 11:28:29 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/15 13:34:07 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/15 15:13:49 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
 /*
-**	Return the biggest value position under the value x
+**	Returns the position in which n should be in list l when sorted ascending
 */
-t_val	*ft_biggest_until(t_val *l, int x)
+int	ft_findpos_list(t_val *l, int n)
 {
-	t_val *biggest;
-	t_val *next;
-	int count;
+	int	index;
+	int chosen;
+	t_val *list;
 
-
-	count = 0;
-	next = l;
-	biggest = next;
-	while (next)
+	index = 0;
+	chosen = 0;
+	list = l;
+	while (list)
 	{
-		if (biggest->value > x)
-			return (next);
-		if (biggest->value < next->value)
-			biggest = next;
-		next = next->next;
-		count++;
+		if (list->value > n)
+			chosen = index;
+		else
+			return (chosen);
+		list = list->next;
+		index++;
 	}
-
-	return (NULL);
+	return (index);
 }
