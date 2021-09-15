@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/13 16:10:54 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/15 09:23:00 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void print_stack_a(t_pw *pw)
 
 	t = (*pw->a);
 	ft_putendl_fd("STACK A", 1);
+	printf("COUNT: %d \n", ft_lstvalsize((*pw->a)));
 	while (t)
 	{
 		x = t->value;
@@ -139,6 +140,7 @@ void print_stack_b(t_pw *pw)
 
 	t = (*pw->b);
 	ft_putendl_fd("STACK B", 1);
+	printf("COUNT: %d \n", ft_lstvalsize((*pw->b)));
 	while (t)
 	{
 		x = t->value;
@@ -184,23 +186,21 @@ int	main(int argc, char **argv)
 	// }
 
 	int counted;
-	int part_counted;
-	int part_counted_c;
+	int ccounted;
+	int total;
 	counted = 0;
-	part_counted = 0;
-	part_counted_c = 0;
-	// sort when going into stack a
-	// sort when going back
-	while (ft_lstvalsize((*arr->a)) != 0)
-			ft_pb(&arr);
-	int putter;
-	putter = 0;
+	ccounted = 0;
+	total = 0;
 
-	while (counted < arr->count)
+	while (total < (arr->count))
 	{
+		while ((ft_lstvalsize((*arr->b)) < (arr->count / 4)))
+		{
+			ft_pb(&arr);
+		}
 		while (ft_lstvalsize((*arr->b)) != 0)
 		{
-			t_val *biggest = ft_biggest_until((*arr->b), 25);
+			t_val *biggest = ft_get_biggest((*arr->b));
 			int position = ft_find_position((*arr->b), biggest->value);
 			while ((*arr->b)->value != biggest->value)
 			{
@@ -210,13 +210,36 @@ int	main(int argc, char **argv)
 					ft_rrb(&arr);
 			}
 			ft_pa(&arr);
-			counted++;
+			total++;
 		}
+
+		while (ccounted < (arr->count / 4))
+		{
+			ccounted++;
+			ft_rra(&arr);
+		}
+		ccounted = 0;
+	}
+
+	while (ft_lstvalsize((*arr->a)) != 0)
+		ft_pb(&arr);
+	while (ft_lstvalsize((*arr->b)) != 0)
+	{
+		t_val *biggest = ft_get_biggest((*arr->b));
+		int position = ft_find_position((*arr->b), biggest->value);
+		while ((*arr->b)->value != biggest->value)
+		{
+			if (position < (ft_lstvalsize((*arr->b)) / 2))
+				ft_rb(&arr);
+			else
+				ft_rrb(&arr);
+		}
+		ft_pa(&arr);
 	}
 
 	// ft_putstr_fd("ACTUALLY TOTALED:", 1);
 	// ft_putnbr_fd(counted, 1);
-	print_stack_a(arr);
+	// print_stack_a(arr);
 	// print_stack_b(arr);
 	return (0);
 }
