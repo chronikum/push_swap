@@ -27,7 +27,7 @@ int	ft_findpos_list(t_val *l, int n)
 	while (list)
 	{
 		if (list->value > n)
-			chosen = index;
+			return (index);
 		else
 			return (chosen);
 		list = list->next;

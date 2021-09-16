@@ -1,0 +1,45 @@
+stack a -> a
+stack b -> b
+
+
+counter
+while a is not sorted
+    while b.size is not 25 // push 25 elements in b
+        pb(a)
+        counter++         // to count actual number of elements switched over
+    // get biggest element in b and put it to the top
+    biggest + get_biggest(b)
+    while (b is not biggest)
+        ft_rrb(b)
+    // we now have the biggest element of b at the top
+
+
+Alternative idea:
+
+compare function which uses ra to go up and then swap elements with each other if one is bigger
+than the other.
+
+
+after that we can loop and use rotate_a until it is being recognized as sorted list
+
+or we do that until it is fully sorted.
+may take too long
+
+// prototype for compare function
+int compare (a, b)
+    return ()
+
+while (1)
+
+
+another alternative:
+
+Sort all numbers over a certain value
+sort positive and negative number separately
+
+
+we can use cleversort - take a number and put it between the numbers which are smaller / and or bigger than
+itself
+
+
+also we need to fragment the iterations than. it is likely too much at once (operations)
