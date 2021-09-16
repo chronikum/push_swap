@@ -55,5 +55,6 @@ t_val		*ft_biggest_until(t_val *l, int x);
 int			ft_find_position(t_val *l, int needle);
 
 int			ft_findpos_list(t_val *l, int n);
+void		ft_sorter(t_pw **pw);
 
 #endif

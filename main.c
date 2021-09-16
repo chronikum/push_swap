@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/15 13:55:57 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/16 14:56:51 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,9 +168,8 @@ int	main(int argc, char **argv)
 	if (ft_check_is_sorted(arr))
 		return (ft_free_array(NULL, 0, 0));
 	ft_arr_lnklst(&arr);
-	// ft_putstr_fd("ACTUALLY TOTALED:", 1);
-	// ft_putnbr_fd(counted, 1);
-	print_stack_a(arr);
-	print_stack_b(arr);
+	ft_sorter(&arr);
+	// print_stack_a(arr);
+	// print_stack_b(arr);
 	return (0);
 }
