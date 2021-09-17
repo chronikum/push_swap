@@ -1,0 +1,35 @@
+while (total <= (*arr)->count && (*(*arr)->a))
+	{
+		last_iter = 0;
+		// while ((ft_lstvalsize((*(*arr)->b)) < s))
+		while (last_iter < s && (*(*arr)->a))
+		{
+			total++;
+			if ((*(*arr)->b))
+			{
+				sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
+				while (ih != (sp + 1))
+				{
+					ft_rb(arr);
+					ih++;
+				}
+			}
+			ft_pb(arr);
+			last_iter++;
+			already++;
+			// if (ih == 0)
+			// 	ft_rrb(arr);
+			while (ih != 0)
+			{
+				ft_rrb(arr);
+				ih--;
+			}
+		}
+		// while ((ft_lstvalsize((*(*arr)->b)) != 0))
+		// 	ft_pa(arr);
+		while (already != 0)
+		{
+			ft_rra(arr);
+			already--;
+		}
+	}

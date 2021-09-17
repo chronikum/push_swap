@@ -14,7 +14,7 @@ VALIDATION = ./validation/ft_check_input.c ./validation/ft_check_duplicate.c ./h
 ./helper/ft_exit_with_error.c ./helper/ft_free_and_increase_counter.c ./helper/ft_arr_lnklst.c ./helper/ft_print_stack.c ./helper/ft_findpos_list.c
 
 SORTED = ./sorting/ft_check_sorted.c ./helper/ft_check_stack_sorted.c ./helper/ft_get_smallest.c ./helper/ft_get_biggest.c ./helper/ft_find_position.c ./helper/ft_push_amount_to_stack.c \
-./helper/ft_sorter.c
+./helper/ft_sorter.c ./helper/ft_below_50.c
 
 OPERATIONS = ./operations/ft_sa.c ./operations/ft_sb.c ./operations/ft_ss.c ./operations/ft_pa.c ./operations/ft_pb.c ./operations/ft_ra.c \
 ./operations/ft_rb.c ./operations/ft_rr.c ./operations/ft_rra.c ./operations/ft_rrb.c ./operations/ft_rrr.c ./operations/ft_rstack_index.c ./operations/ft_biggest_until.c

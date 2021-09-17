@@ -57,4 +57,7 @@ int			ft_find_position(t_val *l, int needle);
 int			ft_findpos_list(t_val *l, int n);
 void		ft_sorter(t_pw **pw);
 
+
+void		ft_below_50(t_pw *arr);
+
 #endif

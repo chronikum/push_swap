@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/17 08:09:14 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/17 09:04:56 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ static int	ft_find_order(t_val *l, int x)
 		}
 		else
 		{
-			if (ft_lstvalsize(l) == 1)
-			{
-				if (next->value > x)
-					return (0);
-				else
-					return (1);
-			}
+			// if (ft_lstvalsize(l) == 1)
+			// {
+			// 	if (next->value > x)
+			// 		return (0);
+			// 	else
+			// 		return (1);
+			// }
 		}
 		counter++;
 		next = next->next;
 	}
-	return (counter);
+	return (counter - 1);
 }
 
 void	ft_sequential_push(t_pw **arr, int s)
@@ -56,13 +56,15 @@ void	ft_sequential_push(t_pw **arr, int s)
 	int ih;
 	int	total;
 	int already;
+	int last_iter;
 
 	ih = 0;
 	total = 0;
 	already = 0;
 	while (total <= (*arr)->count)
 	{
-		while ((ft_lstvalsize((*(*arr)->b)) < s))
+		last_iter = 0;
+		while ((ft_lstvalsize((*(*arr)->b)) < s) && (*(*arr)->a))
 		{
 			total++;
 			if ((*(*arr)->b))
@@ -75,13 +77,11 @@ void	ft_sequential_push(t_pw **arr, int s)
 				}
 			}
 			ft_pb(arr);
-			// ft_putendl_fd("STACK RESULT", 1);
-			// ft_print_stack((*(*arr)->b));
-			// ft_putendl_fd("STACK RESULT", 1);
+			last_iter++;
 			already++;
 			// if (ih == 0)
 			// 	ft_rrb(arr);
-			while ((ih * 2) != 0)
+			while (ih != 0)
 			{
 				ft_rrb(arr);
 				ih--;
@@ -103,16 +103,17 @@ void    ft_sorter(t_pw **pw)
 	int	total;
 
 	total = 0;
-	splitter = 2;
-	if (((*pw)->count) > 50)
-		splitter = 10;
-	if (((*pw)->count) > 50)
-		splitter = 25;
-
+	splitter = 10;
+	if (((*pw)->count) > 100)
+		splitter = 20;
 	if (((*pw)->count) > 250)
-		splitter = 50;
+		splitter = 20;
+	if (((*pw)->count) > 350)
+		splitter = 30;
 	if (((*pw)->count) >= 500)
-		splitter = 100;
-
-	ft_sequential_push(pw, splitter);
+		splitter = 15;
+	if ((*pw)->count <= 50)
+		ft_below_50((*pw));
+	else
+		ft_sequential_push(pw, splitter);
 }
