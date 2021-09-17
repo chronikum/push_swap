@@ -6,14 +6,16 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/17 08:00:44 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/17 08:09:14 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../ft_push_swap.h"
 
-
+/*
+**	Returns the index the value should be in
+*/
 static int	ft_find_order(t_val *l, int x)
 {
 	t_val *next;
@@ -24,7 +26,7 @@ static int	ft_find_order(t_val *l, int x)
 	if (ft_get_smallest(l)->value > x)
 		return (0);
 	if (ft_get_biggest(l)->value < x)
-		return (ft_lstvalsize(l));
+		return (ft_lstvalsize(l) - 1);
 	while (next)
 	{
 		if (next->next)
@@ -58,9 +60,9 @@ void	ft_sequential_push(t_pw **arr, int s)
 	ih = 0;
 	total = 0;
 	already = 0;
-	while (total <= (*arr)->count && s)
+	while (total <= (*arr)->count)
 	{
-		while ((ft_lstvalsize((*(*arr)->b)) < 20))
+		while ((ft_lstvalsize((*(*arr)->b)) < s))
 		{
 			total++;
 			if ((*(*arr)->b))
@@ -73,10 +75,13 @@ void	ft_sequential_push(t_pw **arr, int s)
 				}
 			}
 			ft_pb(arr);
+			// ft_putendl_fd("STACK RESULT", 1);
+			// ft_print_stack((*(*arr)->b));
+			// ft_putendl_fd("STACK RESULT", 1);
 			already++;
-			if (ih == 0)
-				ft_rrb(arr);
-			while (ih != 0)
+			// if (ih == 0)
+			// 	ft_rrb(arr);
+			while ((ih * 2) != 0)
 			{
 				ft_rrb(arr);
 				ih--;
