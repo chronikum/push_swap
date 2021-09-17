@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/17 09:54:03 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/17 11:16:41 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_find_order(t_val *l, int x)
 	if (ft_get_smallest(l)->value > x)
 		return (0);
 	if (ft_get_biggest(l)->value < x)
-		return (ft_lstvalsize(l) - 1);
+		return (ft_lstvalsize(l));
 	while (next)
 	{
 		if (next->next)
@@ -34,50 +34,41 @@ static int	ft_find_order(t_val *l, int x)
 			if (next->value < x && next->next->value > x)
 				return (counter);
 		}
-		else
-		{
-			// if (ft_lstvalsize(l) == 1)
-			// {
-			// 	if (next->value > x)
-			// 		return (0);
-			// 	else
-			// 		return (1);
-			// }
-		}
 		counter++;
 		next = next->next;
 	}
 	return (counter - 1);
 }
 
-void	ft_sequential_push(t_pw **arr, int s)
+void	ft_sequential_push(t_pw **arr, int s, int remainer)
 {
 	int sp;
 	int ih;
 	int	total;
 	int already;
 	int last_iter;
+	int	position;
 
 	ih = 0;
 	total = 0;
 	already = 0;
-	while (total <= (*arr)->count)
+	position = 0;
+	while (total <= (*arr)->count && remainer)
 	{
-		last_iter = 0;
 		while ((ft_lstvalsize((*(*arr)->b)) < s) && (*(*arr)->a))
 		{
 			total++;
 			if ((*(*arr)->b))
 			{
 				sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
-				// if (sp == 0)
-				// 	printf("DID NUMBER %d fuck up?\n", (*(*arr)->a)->value);
 				while (ih != (sp + 1))
 				{
 					ft_rb(arr);
 					ih++;
 				}
 			}
+			else
+				last_iter = 0;
 			ft_pb(arr);
 			last_iter++;
 			already++;
@@ -98,41 +89,59 @@ void	ft_sequential_push(t_pw **arr, int s)
 		}
 	}
 
-	while ((ft_lstvalsize((*(*arr)->a)) != 0))
-			ft_pb(arr);
 
-	while (ft_lstvalsize((*(*arr)->b)) != 0)
-	{
-		t_val *biggest = ft_get_biggest((*(*arr)->b));
-		int position = ft_find_position((*(*arr)->b), biggest->value);
-		while ((*(*arr)->b)->value != biggest->value)
-		{
-			if (position < (ft_lstvalsize((*(*arr)->b)) / 2))
-				ft_rb(arr);
-			else
-				ft_rrb(arr);
-		}
-		ft_pa(arr);
-	}
+	// // shit
+	// while ((ft_lstvalsize((*(*arr)->a)) != remainer))
+	// 	ft_pb(arr);
+	// ft_below_50((*arr));
+	// while (ft_lstvalsize((*(*arr)->b)) != 0)
+	// {
+	// 	sp = ft_find_order((*(*arr)->a), (*(*arr)->b)->value);
+	// 	while (ih != (sp + 1))
+	// 	{
+	// 		ft_ra(arr);
+	// 		ih++;
+	// 	}
+	// 	ft_pa(arr);
+	// 	while (ih != 0)
+	// 	{
+	// 		ft_rra(arr);
+	// 		ih--;
+	// 	}
+	// }
 }
 
 void    ft_sorter(t_pw **pw)
 {
 	int	splitter;
 	int	total;
+	int remainer;
 
 	total = 0;
 	splitter = 10;
+	remainer = 10;
 	if (((*pw)->count) >= 100)
+	{
 		splitter = 25;
-	if (((*pw)->count) > 250)
-		splitter = 20;
+		remainer = 10;
+	}
+	if (((*pw)->count) >= 200)
+	{
+		splitter = 10;
+		remainer = 10;
+	}
 	if (((*pw)->count) > 350)
+	{
 		splitter = 30;
+		remainer = 10;
+	}
 	if (((*pw)->count) >= 500)
-		splitter = 15;
+	{
+		splitter = 25;
+		remainer = 10;
+	}
 	if ((*pw)->count <= 50)
 		ft_below_50((*pw));
 	else
-		ft_sequential_push(pw, splitter);
+		ft_sequential_push(pw, splitter, remainer);
 }
