@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/17 14:34:56 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/17 15:04:28 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 			total++;
 			if ((*(*arr)->b))
 			{
+				// make this more efficient.
+				// go down and up to find the insertion spot not only go rotate up
 				sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
 				while (ih != (sp + 1))
 				{
@@ -80,12 +82,11 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 			already++;
 			// if (ih == 0)
 			// 	ft_rrb(arr);
-			// while (ih != 0)
-			// {
-			// 	ft_rrb(arr);
-			// 	ih--;
-			// }
-			ih = 0;
+			while (ih != 0)
+			{
+				ft_rrb(arr);
+				ih--;
+			}
 		}
 		while ((ft_lstvalsize((*(*arr)->b)) != 0))
 			ft_pa(arr);
