@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/17 11:16:41 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/17 14:34:56 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,15 @@ static int	ft_find_order(t_val *l, int x)
 
 void	ft_sequential_push(t_pw **arr, int s, int remainer)
 {
-	int sp;
-	int ih;
-	int	total;
-	int already;
-	int last_iter;
-	int	position;
+	int		sp;
+	int		ih;
+	int		total;
+	int		already;
+	int		last_iter;
 
 	ih = 0;
 	total = 0;
 	already = 0;
-	position = 0;
 	while (total <= (*arr)->count && remainer)
 	{
 		while ((ft_lstvalsize((*(*arr)->b)) < s) && (*(*arr)->a))
@@ -66,6 +64,14 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 					ft_rb(arr);
 					ih++;
 				}
+				// while ((*(*arr)->b)->value != should->value)
+				// {
+				// 	if (sp < (ft_lstvalsize((*(*arr)->b)) / 2))
+				// 		ft_rb(arr);
+				// 	else
+				// 		ft_rrb(arr);
+				// 	ih++;
+				// }
 			}
 			else
 				last_iter = 0;
@@ -74,11 +80,12 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 			already++;
 			// if (ih == 0)
 			// 	ft_rrb(arr);
-			while (ih != 0)
-			{
-				ft_rrb(arr);
-				ih--;
-			}
+			// while (ih != 0)
+			// {
+			// 	ft_rrb(arr);
+			// 	ih--;
+			// }
+			ih = 0;
 		}
 		while ((ft_lstvalsize((*(*arr)->b)) != 0))
 			ft_pa(arr);
@@ -91,24 +98,24 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 
 
 	// // shit
-	// while ((ft_lstvalsize((*(*arr)->a)) != remainer))
-	// 	ft_pb(arr);
-	// ft_below_50((*arr));
-	// while (ft_lstvalsize((*(*arr)->b)) != 0)
-	// {
-	// 	sp = ft_find_order((*(*arr)->a), (*(*arr)->b)->value);
-	// 	while (ih != (sp + 1))
-	// 	{
-	// 		ft_ra(arr);
-	// 		ih++;
-	// 	}
-	// 	ft_pa(arr);
-	// 	while (ih != 0)
-	// 	{
-	// 		ft_rra(arr);
-	// 		ih--;
-	// 	}
-	// }
+	while ((ft_lstvalsize((*(*arr)->a)) != remainer))
+		ft_pb(arr);
+	ft_below_50((*arr));
+	while (ft_lstvalsize((*(*arr)->b)) != 0)
+	{
+		sp = ft_find_order((*(*arr)->a), (*(*arr)->b)->value);
+		while (ih != (sp + 1))
+		{
+			ft_ra(arr);
+			ih++;
+		}
+		ft_pa(arr);
+		while (ih != 0)
+		{
+			ft_rra(arr);
+			ih--;
+		}
+	}
 }
 
 void    ft_sorter(t_pw **pw)
