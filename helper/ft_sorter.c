@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/17 15:04:28 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 09:43:15 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@
 */
 static int	ft_find_order(t_val *l, int x)
 {
-	t_val *next;
 	int counter;
+	t_val *tmp;
 
 	counter = 0;
-	next = l;
+	tmp = l;
 	if (ft_get_smallest(l)->value > x)
 		return (0);
 	if (ft_get_biggest(l)->value < x)
 		return (ft_lstvalsize(l));
-	while (next)
+	while (tmp)
 	{
-		if (next->next)
+		if (tmp->next)
 		{
-			if (next->value < x && next->next->value > x)
+			if (tmp->value < x && tmp->next->value > x)
 				return (counter);
 		}
 		counter++;
-		next = next->next;
+		tmp = tmp->next;
 	}
 	return (counter - 1);
 }
@@ -66,13 +66,23 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 					ft_rb(arr);
 					ih++;
 				}
-				// while ((*(*arr)->b)->value != should->value)
+				// if (sh)
 				// {
-				// 	if (sp < (ft_lstvalsize((*(*arr)->b)) / 2))
-				// 		ft_rb(arr);
-				// 	else
-				// 		ft_rrb(arr);
-				// 	ih++;
+				// 	int current = (*(*arr)->b)->value;
+				// 	while ((*(*arr)->b)->value != sh->value)
+				// 	{
+				// 		// ft_putstr_fd("DANGER 2", 1);
+				// 		if (sp < (ft_lstvalsize((*(*arr)->b)) / 2))
+				// 		{
+				// 			ft_rb(arr);
+				// 			ih++;
+				// 		}
+				// 		else
+				// 		{
+				// 			ft_rrb(arr);
+				// 			ih--;
+				// 		}
+				// 	}
 				// }
 			}
 			else
@@ -82,12 +92,21 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 			already++;
 			// if (ih == 0)
 			// 	ft_rrb(arr);
+			// while (ih != 0)
+			// while (ft_get_smallest((*(*arr)->b))->value != (*(*arr)->b)->value)
 			while (ih != 0)
 			{
 				ft_rrb(arr);
 				ih--;
 			}
 		}
+		if (!ft_check_stack_sorted((*(*arr)->b)))
+		{
+			// ft_putstr_fd("ERROR! STACK IS NOT SORTED", 1);
+			ft_rb(arr);
+		}
+		if (!ft_check_stack_sorted((*(*arr)->b)))
+			ft_putstr_fd("ERROR! STACK IS NOT SORTED", 1);
 		while ((ft_lstvalsize((*(*arr)->b)) != 0))
 			ft_pa(arr);
 		while (already != 0)

@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 10:36:32 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/13 11:51:15 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 09:43:41 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 int	ft_check_stack_sorted(t_val *l)
 {
-	t_val *s;
-	int last;
+	t_val		*t;
 
-	s = l;
-	last = l->value;
-	while (s)
+	if (!l)
+		return (0);
+	t = l;
+	while (t->next)
 	{
-		if (last < s->next->value)
-		{
-			last = s->next->value;
-			s = s->next;
-		}
-		else
+		if (t->value > t->next->value)
 			return (0);
-		s = s->next;
+		t = t->next;
 	}
 	return (1);
 }
