@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 11:54:34 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 12:16:57 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,25 +90,23 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 			ft_ra(arr);
 		}
 	}
-
-	while ((ft_lstvalsize((*(*arr)->a)) != remainer))
+	while ((ft_lstvalsize((*(*arr)->a)) > last_iter))
 		ft_pb(arr);
-	if (!ft_check_stack_sorted((*(*arr)->a)))
-		ft_below_50((*arr));
+
+	while ((ft_get_biggest((*(*arr)->a)) != (*(*arr)->a)))
+		ft_pb(arr);
+	// if (!ft_check_stack_sorted((*(*arr)->a)))
+	// 	ft_below_50((*arr));
 	while (ft_lstvalsize((*(*arr)->b)) != 0)
 	{
+		ih = 0;
 		sp = ft_find_order((*(*arr)->a), (*(*arr)->b)->value);
 		while (ih != (sp + 1))
 		{
-			ft_ra(arr);
+			ft_rb(arr);
 			ih++;
 		}
 		ft_pa(arr);
-		while (ih != 0)
-		{
-			ft_rra(arr);
-			ih--;
-		}
 	}
 }
 
