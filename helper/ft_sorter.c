@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 20:41:09 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 21:11:43 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,11 +137,13 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 	int	total;
 	int	beginning1;
 	int	beginning2;
+	int	position;
 
 	s = 0;
 	remainer = 0;
 	beginning1 = 0;
 	total = 0;
+	position = 0;
 	while ((total <= (*arr)->count))
 	{
 		if ((*(*arr)->a)->index > ((*arr)->count / 2))
@@ -156,8 +158,14 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 	// Smaller numbers
 	while ((*(*arr)->b))
 	{
+		position = ft_find_position((*(*arr)->b), ft_get_biggest((*(*arr)->b))->value);
 		while (ft_get_biggest((*(*arr)->b))->value != (*(*arr)->b)->value)
-			ft_rb(arr);
+		{
+			if (position < ft_lstvalsize((*(*arr)->b)) / 2)
+				ft_rb(arr);
+			else
+				ft_rrb(arr);
+		}
 		ft_pa(arr);
 	}
 	while (beginning1 != (*(*arr)->a)->value)
@@ -170,8 +178,14 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 		ft_pb(arr);
 	while ((*(*arr)->b))
 	{
+		position = ft_find_position((*(*arr)->b), ft_get_biggest((*(*arr)->b))->value);
 		while (ft_get_biggest((*(*arr)->b))->value != (*(*arr)->b)->value)
-			ft_rb(arr);
+		{
+			if (position < ft_lstvalsize((*(*arr)->b)) / 2)
+				ft_rb(arr);
+			else
+				ft_rrb(arr);
+		}
 		ft_pa(arr);
 	}
 
