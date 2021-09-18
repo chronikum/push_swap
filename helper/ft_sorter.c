@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 10:12:34 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 11:54:34 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,21 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 	int		total;
 	int		already;
 	int		last_iter;
+	int		coll;
 
 	ih = 0;
 	total = 0;
 	already = 0;
+	coll = 0;
+
 	while (total <= (*arr)->count && remainer)
 	{
+		last_iter = 0;
 		while ((ft_lstvalsize((*(*arr)->b)) < s) && (*(*arr)->a))
 		{
 			total++;
 			if ((*(*arr)->b))
 			{
-				// make this more efficient.
-				// go down and up to find the insertion spot not only go rotate up
 				sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
 				while (ih != (sp + 1))
 				{
@@ -67,15 +69,9 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 					ih++;
 				}
 			}
-			else
-				last_iter = 0;
 			ft_pb(arr);
 			last_iter++;
 			already++;
-			// if (ih == 0)
-			// 	ft_rrb(arr);
-			// while (ih != 0)
-			// while (ft_get_smallest((*(*arr)->b))->value != (*(*arr)->b)->value)
 			while (ih != 0)
 			{
 				ft_rrb(arr);
@@ -90,16 +86,15 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 			ft_pa(arr);
 		while (already != 0)
 		{
-			ft_rra(arr);
 			already--;
+			ft_ra(arr);
 		}
 	}
 
-
-	// // shit
 	while ((ft_lstvalsize((*(*arr)->a)) != remainer))
 		ft_pb(arr);
-	ft_below_50((*arr));
+	if (!ft_check_stack_sorted((*(*arr)->a)))
+		ft_below_50((*arr));
 	while (ft_lstvalsize((*(*arr)->b)) != 0)
 	{
 		sp = ft_find_order((*(*arr)->a), (*(*arr)->b)->value);
