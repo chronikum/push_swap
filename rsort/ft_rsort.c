@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstvalmap.c                                     :+:      :+:    :+:   */
+/*   ft_rsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/22 13:56:24 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 15:14:41 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/18 13:56:59 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/18 15:47:52 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_push_swap.h"
 
-t_val	*ft_lstvalmap(t_val *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_rsort(t_pw **pw)
 {
-	t_val	*nl;
-	t_val	*ne;
+	int counter;
 
-	if (lst == NULL)
-		return (NULL);
-	nl = NULL;
-	while (lst)
+	counter = 0;
+	while (!ft_check_stack_sorted((*(*pw)->a)))
 	{
-		ne = ft_lstvalnew((*(int*) (*f)(lst->content)), lst->index);
-		if (!ne)
-		{
-			ft_lstvalclear(&nl, del);
-			return (NULL);
-		}
-		ft_lstvaladd_back(&nl, ne);
-		ne = ne->next;
-		lst = lst->next;
+		if ((*(*pw)->a)->index < (*(*pw)->a)->next->index)
+			ft_sa(pw);
 	}
-	return (nl);
 }

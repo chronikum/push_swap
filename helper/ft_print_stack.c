@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 09:57:15 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/08 09:58:19 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 15:00:29 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void ft_print_stack(t_val *t)
 	{
 		x = t->value;
 		ft_putnbr_fd(x, 1);
-		ft_putstr_fd("\n", 1);
+		ft_putstr_fd(" index ", 1);
+		ft_putnbr_fd(t->index, 1);
+		ft_putstr_fd("\n ", 1);
 		t = t->next;
 	}
 	ft_putendl_fd("PRINTING STACK END", 1);

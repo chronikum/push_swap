@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 08:57:34 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/13 09:23:17 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 15:12:18 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_rstack_index(t_val **stack, int amount, int a)
 		else
 			write(1, "rb\n", 3);
 		first = (*stack);
-		ft_lstvaladd_back(stack, ft_lstvalnew(first->value));
+		ft_lstvaladd_back(stack, ft_lstvalnew(first->value, first->index));
 		(*stack) = (*stack)->next;
 		count++;
 	}

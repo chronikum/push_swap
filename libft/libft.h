@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/08 11:15:10 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 15:16:30 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_val
 	void			*content;
 	struct s_val	*next;
 	struct s_val	*last;
+	int				index;
 }	t_val;
 
 
@@ -93,7 +94,7 @@ int			ft_recursive_power(int base, int n);
 long long	ft_ll_atoi(const char *str);
 
 t_val		*ft_lstvalindex(t_val *lst, int index);
-t_val		*ft_lstvalnew(int value);
+t_val		*ft_lstvalnew(int value, int index);
 void		ft_lstvaladd_back(t_val **lst, t_val *new);
 void		ft_lstvaladd_front(t_val **lst, t_val *new);
 void		ft_lstvalclear(t_val **lst, void (*del)(void*));

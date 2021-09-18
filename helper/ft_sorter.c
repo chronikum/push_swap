@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 13:32:35 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 15:56:34 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,30 @@ static int	ft_find_order(t_val *l, int x)
 	}
 	return (counter - 1);
 }
+
+// static int	ft_find_order2(t_val *l, int x)
+// {
+// 	int counter;
+// 	t_val *tmp;
+
+// 	counter = 0;
+// 	tmp = l;
+// 	if (ft_get_smallest(l)->value > x)
+// 		return (0);
+// 	if (ft_get_biggest(l)->value < x)
+// 		return (ft_lstvalsize(l));
+// 	while (tmp)
+// 	{
+// 		if (tmp->next)
+// 		{
+// 			if (tmp->value < x && tmp->next->value > x)
+// 				return (counter);
+// 		}
+// 		counter++;
+// 		tmp = tmp->next;
+// 	}
+// 	return (counter - 1);
+// }
 
 // static int	ft_find_order2(t_val *l, int x)
 // {
@@ -138,12 +162,11 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 		ft_pb(arr);
 	if ((ft_get_biggest((*(*arr)->a)) != (*(*arr)->a)) && !(ft_check_stack_sorted((*(*arr)->a))))
 		ft_pb(arr);
-	ft_pb(arr);
 	while (ft_lstvalsize((*(*arr)->b)) != 0)
 	{
 		ih = 0;
-		sp = ft_find_order((*(*arr)->a), (*(*arr)->b)->value);
-		while (ih != (sp + 1))
+		sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
+		while (ih != (sp + 1) && sp != 0)
 		{
 			ft_ra(arr);
 			ih++;
@@ -164,7 +187,7 @@ void    ft_sorter(t_pw **pw)
 	if (((*pw)->count) >= 100)
 	{
 		splitter = 25;
-		remainer = 10;
+		remainer = 25;
 	}
 	if (((*pw)->count) >= 200)
 	{
@@ -174,7 +197,7 @@ void    ft_sorter(t_pw **pw)
 	if (((*pw)->count) > 350)
 	{
 		splitter = 30;
-		remainer = 10;
+		remainer = 30;
 	}
 	if (((*pw)->count) >= 500)
 	{

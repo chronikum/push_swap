@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:15:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/13 15:53:57 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 15:13:51 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_pan(t_pw **arr, int amount)
 	while (ft_lstvalsize(b) != 0 && counter < amount)
 	{
 		write(1, "pa\n", 3);
-		ft_lstvaladd_front((*arr)->a, ft_lstvalnew(b->value));
+		ft_lstvaladd_front((*arr)->a, ft_lstvalnew(b->value, b->index));
 		(*(*arr)->b) = (*(*arr)->b)->next;
 		counter++;
 	}
@@ -44,7 +44,7 @@ void	ft_pbn(t_pw **arr, int amount)
 	while (ft_lstvalsize(b) != 0 && counter < amount)
 	{
 		write(1, "pb\n", 3);
-		ft_lstvaladd_front((*arr)->b, ft_lstvalnew(b->value));
+		ft_lstvaladd_front((*arr)->b, ft_lstvalnew(b->value, b->index));
 		(*(*arr)->b) = (*(*arr)->b)->next;
 		counter++;
 	}

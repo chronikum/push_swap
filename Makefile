@@ -20,6 +20,8 @@ SORTED = ./sorting/ft_check_sorted.c ./helper/ft_check_stack_sorted.c ./helper/f
 OPERATIONS = ./operations/ft_sa.c ./operations/ft_sb.c ./operations/ft_ss.c ./operations/ft_pa.c ./operations/ft_pb.c ./operations/ft_ra.c \
 ./operations/ft_rb.c ./operations/ft_rr.c ./operations/ft_rra.c ./operations/ft_rrb.c ./operations/ft_rrr.c ./operations/ft_rstack_index.c ./operations/ft_biggest_until.c
 
+RSORT = ./rsort/ft_rsort.c
+
 all: $(NAME)
 
 ${LIBFTNAME}:
@@ -27,10 +29,10 @@ ${LIBFTNAME}:
 	mv ./libft/${LIBFTNAME} ./${LIBFTNAME}
 
 ${NAME}: ${LIBFTNAME}
-	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${SORTED} ${LIBFTNAME} $(OPERATIONS) -o ${PUSH_SWAP}
+	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${SORTED} ${LIBFTNAME} ${RSORT} $(OPERATIONS) -o ${PUSH_SWAP}
 
 bonus: libft
-	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${SORTED} ${LIBFTNAME} $(OPERATIONS) -o ${PUSH_SWAP}
+	${CC} ${CFLAGS} ${SRC} ${VALIDATION} ${SORTED} ${LIBFTNAME} ${RSORT} $(OPERATIONS) -o ${PUSH_SWAP}
 
 clean:
 	rm -rf *.o
