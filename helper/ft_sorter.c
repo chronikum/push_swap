@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 15:56:34 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 16:09:08 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,17 +162,19 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 		ft_pb(arr);
 	if ((ft_get_biggest((*(*arr)->a)) != (*(*arr)->a)) && !(ft_check_stack_sorted((*(*arr)->a))))
 		ft_pb(arr);
-	while (ft_lstvalsize((*(*arr)->b)) != 0)
-	{
-		ih = 0;
-		sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
-		while (ih != (sp + 1) && sp != 0)
-		{
-			ft_ra(arr);
-			ih++;
-		}
-		ft_pa(arr);
-	}
+
+
+	// while (ft_lstvalsize((*(*arr)->b)) != 0)
+	// {
+	// 	ih = 0;
+	// 	sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
+	// 	while (ih != (sp + 1) && sp != 0)
+	// 	{
+	// 		ft_ra(arr);
+	// 		ih++;
+	// 	}
+	// 	ft_pa(arr);
+	// }
 }
 
 void    ft_sorter(t_pw **pw)
