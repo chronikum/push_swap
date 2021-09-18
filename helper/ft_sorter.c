@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 12:16:57 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 13:32:35 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,50 @@ static int	ft_find_order(t_val *l, int x)
 	}
 	return (counter - 1);
 }
+
+// static int	ft_find_order2(t_val *l, int x)
+// {
+// 	int counter;
+// 	t_val *smallest;
+// 	t_val *biggest;
+// 	int *array;
+
+// 	counter = 0;
+// 	if (!l)
+// 		return (0);
+// 	smallest = ft_get_smallest(l);
+// 	biggest = ft_get_biggest(l);
+// 	array = malloc(sizeof(int) * ft_lstvalsize(l));
+// 	ft_stoip(l, &array);
+// 	ft_bubble_sort(array, ft_lstvalsize(l));
+// 	if (smallest->value > x)
+// 		return (ft_find_position(l, smallest->value));
+// 	if (biggest->value < x)
+// 		return (ft_find_position(l, biggest->value));
+// 	while (counter < ft_lstvalsize(l) && counter >= 0)
+// 	{
+// 		if (array[counter - 1] < x && array[counter] > x)
+// 			break;
+// 		counter++;
+// 	}
+// 	return (ft_find_position(l, array[counter - 1]));
+
+// 	// if (smallest->value > x)
+// 	// 	return (0);
+// 	// if (biggest->value < x)
+// 	// 	return (ft_lstvalsize(l));
+// 	// while (tmp)
+// 	// {
+// 	// 	if (tmp->next)
+// 	// 	{
+// 	// 		if (tmp->value < x && tmp->next->value > x)
+// 	// 			return (counter);
+// 	// 	}
+// 	// 	counter++;
+// 	// 	tmp = tmp->next;
+// 	// }
+// 	return (counter);
+// }
 
 void	ft_sequential_push(t_pw **arr, int s, int remainer)
 {
@@ -92,18 +136,16 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 	}
 	while ((ft_lstvalsize((*(*arr)->a)) > last_iter))
 		ft_pb(arr);
-
-	while ((ft_get_biggest((*(*arr)->a)) != (*(*arr)->a)))
+	if ((ft_get_biggest((*(*arr)->a)) != (*(*arr)->a)) && !(ft_check_stack_sorted((*(*arr)->a))))
 		ft_pb(arr);
-	// if (!ft_check_stack_sorted((*(*arr)->a)))
-	// 	ft_below_50((*arr));
+	ft_pb(arr);
 	while (ft_lstvalsize((*(*arr)->b)) != 0)
 	{
 		ih = 0;
 		sp = ft_find_order((*(*arr)->a), (*(*arr)->b)->value);
 		while (ih != (sp + 1))
 		{
-			ft_rb(arr);
+			ft_ra(arr);
 			ih++;
 		}
 		ft_pa(arr);
