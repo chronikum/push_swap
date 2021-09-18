@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 16:09:08 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 20:41:09 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,53 @@
 /*
 **	Returns the index the value should be in
 */
-static int	ft_find_order(t_val *l, int x)
-{
-	int counter;
-	t_val *tmp;
+// static int	ft_find_order(t_val *l, int x)
+// {
+// 	int counter;
+// 	t_val *tmp;
 
-	counter = 0;
-	tmp = l;
-	if (ft_get_smallest(l)->value > x)
-		return (0);
-	if (ft_get_biggest(l)->value < x)
-		return (ft_lstvalsize(l));
-	while (tmp)
-	{
-		if (tmp->next)
-		{
-			if (tmp->value < x && tmp->next->value > x)
-				return (counter);
-		}
-		counter++;
-		tmp = tmp->next;
-	}
-	return (counter - 1);
-}
+// 	counter = 0;
+// 	tmp = l;
+// 	if (ft_get_smallest(l)->value > x)
+// 		return (0);
+// 	if (ft_get_biggest(l)->value < x)
+// 		return (ft_lstvalsize(l));
+// 	while (tmp)
+// 	{
+// 		if (tmp->next)
+// 		{
+// 			if (tmp->value < x && tmp->next->value > x)
+// 				return (counter);
+// 		}
+// 		counter++;
+// 		tmp = tmp->next;
+// 	}
+// 	return (counter - 1);
+// }
+
+// static int	ft_find_order2(t_val *l, int x)
+// {
+// 	int counter;
+// 	t_val *tmp;
+
+// 	counter = 0;
+// 	tmp = l;
+// 	if (ft_get_smallest(l)->value > x)
+// 		return (0);
+// 	if (ft_get_biggest(l)->value < x)
+// 		return (ft_lstvalsize(l));
+// 	while (tmp)
+// 	{
+// 		if (tmp->next)
+// 		{
+// 			if (tmp->index < x && tmp->next->index > x)
+// 				return (counter);
+// 		}
+// 		counter++;
+// 		tmp = tmp->next;
+// 	}
+// 	return (counter - 1);
+// }
 
 // static int	ft_find_order2(t_val *l, int x)
 // {
@@ -110,59 +134,101 @@ static int	ft_find_order(t_val *l, int x)
 
 void	ft_sequential_push(t_pw **arr, int s, int remainer)
 {
-	int		sp;
-	int		ih;
-	int		total;
-	int		already;
-	int		last_iter;
-	int		coll;
+	int	total;
+	int	beginning1;
+	int	beginning2;
 
-	ih = 0;
+	s = 0;
+	remainer = 0;
+	beginning1 = 0;
 	total = 0;
-	already = 0;
-	coll = 0;
-
-	while (total <= (*arr)->count && remainer)
+	while ((total <= (*arr)->count))
 	{
-		last_iter = 0;
-		while ((ft_lstvalsize((*(*arr)->b)) < s) && (*(*arr)->a))
-		{
-			total++;
-			if ((*(*arr)->b))
-			{
-				sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
-				while (ih != (sp + 1))
-				{
-					ft_rb(arr);
-					ih++;
-				}
-			}
+		if ((*(*arr)->a)->index > ((*arr)->count / 2))
 			ft_pb(arr);
-			last_iter++;
-			already++;
-			while (ih != 0)
-			{
-				ft_rrb(arr);
-				ih--;
-			}
-		}
-		if (!ft_check_stack_sorted((*(*arr)->b)))
-			ft_rb(arr);
-		if (!ft_check_stack_sorted((*(*arr)->b)))
-			ft_putstr_fd("ERROR! STACK IS NOT SORTED", 1);
-		while ((ft_lstvalsize((*(*arr)->b)) != 0))
-			ft_pa(arr);
-		while (already != 0)
-		{
-			already--;
+		else
 			ft_ra(arr);
-		}
+		total++;
 	}
-	while ((ft_lstvalsize((*(*arr)->a)) > last_iter))
-		ft_pb(arr);
-	if ((ft_get_biggest((*(*arr)->a)) != (*(*arr)->a)) && !(ft_check_stack_sorted((*(*arr)->a))))
-		ft_pb(arr);
 
+	beginning1 = ft_get_biggest((*(*arr)->b))->value;
+	beginning2 = ft_get_biggest((*(*arr)->b))->value;
+	// Smaller numbers
+	while ((*(*arr)->b))
+	{
+		while (ft_get_biggest((*(*arr)->b))->value != (*(*arr)->b)->value)
+			ft_rb(arr);
+		ft_pa(arr);
+	}
+	while (beginning1 != (*(*arr)->a)->value)
+	{
+		ft_rra(arr);
+	}
+	ft_ra(arr);
+	// Bigger numbers
+	while ((*(*arr)->a)->value != beginning2)
+		ft_pb(arr);
+	while ((*(*arr)->b))
+	{
+		while (ft_get_biggest((*(*arr)->b))->value != (*(*arr)->b)->value)
+			ft_rb(arr);
+		ft_pa(arr);
+	}
+
+	// OLD
+	// while (total <= (*arr)->count && remainer)
+	// {
+	// 	last_iter = 0;
+	// 	while ((ft_lstvalsize((*(*arr)->b)) < s) && (*(*arr)->a))
+	// 	{
+	// 		total++;
+	// 		if ((*(*arr)->b))
+	// 		{
+	// 			sp = ft_find_order((*(*arr)->b), (*(*arr)->a)->value);
+	// 			while (ih != (sp + 1))
+	// 			{
+	// 				ft_rb(arr);
+	// 				ih++;
+	// 			}
+	// 		}
+	// 		ft_pb(arr);
+	// 		last_iter++;
+	// 		already++;
+	// 		while (ih != 0)
+	// 		{
+	// 			ft_rrb(arr);
+	// 			ih--;
+	// 		}
+	// 	}
+	// 	if (!ft_check_stack_sorted((*(*arr)->b)))
+	// 		ft_rb(arr);
+	// 	if (!ft_check_stack_sorted((*(*arr)->b)))
+	// 		ft_putstr_fd("ERROR! STACK IS NOT SORTED", 1);
+	// 	while ((ft_lstvalsize((*(*arr)->b)) != 0))
+	// 		ft_pa(arr);
+	// 	while (already != 0)
+	// 	{
+	// 		already--;
+	// 		ft_ra(arr);
+	// 	}
+	// }
+	// while ((ft_lstvalsize((*(*arr)->a)) > last_iter))
+	// 	ft_pb(arr);
+	// if ((ft_get_biggest((*(*arr)->a)) != (*(*arr)->a)) && !(ft_check_stack_sorted((*(*arr)->a))))
+	// 	ft_pb(arr);
+	// OLD
+
+	// while (ft_lstvalsize((*(*arr)->b)) != 0)
+	// {
+	// 	ih = 0;
+	// 	sp = ft_find_order2((*(*arr)->b), (*(*arr)->a)->index);
+	// 	while (ih != (sp + 1) && sp != 0)
+	// 	{
+	// 		ft_ra(arr);
+	// 		ih++;
+	// 	}
+	// 	ft_pa(arr);
+	// }
 
 	// while (ft_lstvalsize((*(*arr)->b)) != 0)
 	// {
