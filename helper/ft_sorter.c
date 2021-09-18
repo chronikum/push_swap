@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 09:43:15 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/18 10:12:34 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,6 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 					ft_rb(arr);
 					ih++;
 				}
-				// if (sh)
-				// {
-				// 	int current = (*(*arr)->b)->value;
-				// 	while ((*(*arr)->b)->value != sh->value)
-				// 	{
-				// 		// ft_putstr_fd("DANGER 2", 1);
-				// 		if (sp < (ft_lstvalsize((*(*arr)->b)) / 2))
-				// 		{
-				// 			ft_rb(arr);
-				// 			ih++;
-				// 		}
-				// 		else
-				// 		{
-				// 			ft_rrb(arr);
-				// 			ih--;
-				// 		}
-				// 	}
-				// }
 			}
 			else
 				last_iter = 0;
@@ -101,10 +83,7 @@ void	ft_sequential_push(t_pw **arr, int s, int remainer)
 			}
 		}
 		if (!ft_check_stack_sorted((*(*arr)->b)))
-		{
-			// ft_putstr_fd("ERROR! STACK IS NOT SORTED", 1);
 			ft_rb(arr);
-		}
 		if (!ft_check_stack_sorted((*(*arr)->b)))
 			ft_putstr_fd("ERROR! STACK IS NOT SORTED", 1);
 		while ((ft_lstvalsize((*(*arr)->b)) != 0))
