@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 12:03:44 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/19 15:31:42 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/19 15:34:57 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ static	void	ft_sub_three(t_pw **arr)
 	}
 }
 
+/*
+**	Sorts total stack size of 5 using
+**	sub_three as subfunction
+*/
 static void	ft_sort_five(t_pw **arr)
 {
 	while (ft_lstvalsize((*(*arr)->a)) != 3)
@@ -57,7 +61,6 @@ static void	ft_sort_five(t_pw **arr)
 	if ((*(*arr)->b)->index < (*(*arr)->b)->next->index)
 		ft_sb(arr);
 	ft_sub_three(arr);
-	// ft_rra(arr);
 	ft_pa(arr);
 	ft_pa(arr);
 }
