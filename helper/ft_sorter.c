@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 22:10:06 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/19 09:36:08 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,15 +132,13 @@
 // 	return (counter);
 // }
 
-void	ft_sequential_push(t_pw **arr, int s, int remainer)
+void	ft_sequential_push(t_pw **arr)
 {
 	int	total;
 	int	beginning1;
 	int	beginning2;
 	int	position;
 
-	s = 0;
-	remainer = 0;
 	beginning1 = 0;
 	total = 0;
 	position = 0;
