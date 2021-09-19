@@ -52,6 +52,7 @@ int			ft_findpos_list(t_val *l, int n);
 void		ft_sorter(t_pw **pw);
 void		ft_half_sort(t_pw **arr);
 void		ft_split_half(t_pw **arr);
+void		ft_small_sort(t_pw **arr);
 
 void		ft_below_50(t_pw *arr);
 
