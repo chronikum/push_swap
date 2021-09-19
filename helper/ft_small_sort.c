@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 12:03:44 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/19 13:53:20 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/19 15:31:42 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,21 @@ static	void	ft_sub_three(t_pw **arr)
 	}
 }
 
-static	void	ft_sub_six(t_pw **arr)
+static void	ft_sort_five(t_pw **arr)
 {
-	t_val *new;
-
-	new = ft_get_biggest((*(*arr)->a));
-	while ((!ft_check_stack_sorted((*(*arr)->a))) && new != (*(*arr)->a))
+	while (ft_lstvalsize((*(*arr)->a)) != 3)
 	{
-		new = ft_biggest_until((*(*arr)->a), new->value);
-		ft_rra(arr);
+		if ((*(*arr)->a)->index < ((*arr)->count / 2))
+			ft_pb(arr);
+		else
+			ft_ra(arr);
 	}
+	if ((*(*arr)->b)->index < (*(*arr)->b)->next->index)
+		ft_sb(arr);
+	ft_sub_three(arr);
+	// ft_rra(arr);
+	ft_pa(arr);
+	ft_pa(arr);
 }
 
 /*
@@ -66,6 +71,8 @@ void	ft_small_sort(t_pw **arr)
 		ft_sa(arr);
 	else if ((*arr)->count < 4)
 		ft_sub_three(arr);
+	else if ((*arr)->count == 5)
+		ft_sort_five(arr);
 	else
-		ft_sub_six(arr);
+		ft_below_50((*arr));
 }
