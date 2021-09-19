@@ -6,12 +6,16 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/19 10:57:02 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/19 11:02:27 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
+/*
+**	Sorts stack b in stack a. Used
+**	when a stack has been splitted
+*/
 void	ft_half_sort(t_pw **arr)
 {
 	int		position;
