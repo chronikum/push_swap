@@ -6,46 +6,19 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/19 11:08:42 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/19 11:36:19 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
 /*
-**	Sorts stack b in stack a. Used
-**	when a stack has been splitted
+**	Splits stack a in half using the index
+**	value of every element
 */
-void	ft_half_sort(t_pw **arr)
-{
-	int		position;
-	t_val	*biggest;
-
-	while ((*(*arr)->b))
-	{
-		biggest = ft_get_biggest((*(*arr)->b));
-		position = ft_find_position((*(*arr)->b), biggest->value);
-		while (ft_get_biggest((*(*arr)->b))->value != (*(*arr)->b)->value)
-		{
-			if (position < ft_lstvalsize((*(*arr)->b)) / 2)
-				ft_rb(arr);
-			else
-				ft_rrb(arr);
-		}
-		ft_pa(arr);
-	}
-}
-
-
-/*
-**	Halfs stack a and sorts them both
-**	Appropiate for over 250 and counting
-*/
-void	ft_big_push(t_pw **arr)
+static void	ft_split_half(t_pw **arr)
 {
 	int	total;
-	int	beginning1;
-	int	beginning2;
 
 	total = 0;
 	while ((total <= (*arr)->count))
@@ -56,6 +29,42 @@ void	ft_big_push(t_pw **arr)
 			ft_ra(arr);
 		total++;
 	}
+}
+
+/*
+**	Sorts stack b in stack a. Used
+**	when a stack has been splitted
+*/
+static void	ft_half_sort(t_pw **arr)
+{
+	int		position;
+	t_val	*biggest;
+
+	while ((*(*arr)->b))
+	{
+		biggest = ft_get_biggest((*(*arr)->b));
+		position = ft_find_position((*(*arr)->b), biggest->value);
+		while (ft_get_biggest((*(*arr)->b))->value != (*(*arr)->b)->value)
+		{
+			if (position <= ft_lstvalsize((*(*arr)->b)) / 2)
+				ft_rb(arr);
+			else
+				ft_rrb(arr);
+		}
+		ft_pa(arr);
+	}
+}
+
+/*
+**	Halfs stack a and sorts them both
+**	Appropiate for over 250 and counting
+*/
+void	ft_big_push(t_pw **arr)
+{
+	int	beginning1;
+	int	beginning2;
+
+	ft_split_half(arr);
 	beginning1 = ft_get_biggest((*(*arr)->b))->value;
 	beginning2 = ft_get_smallest((*(*arr)->b))->value;
 	ft_half_sort(arr);
@@ -81,8 +90,6 @@ void	ft_big_push(t_pw **arr)
 
 void	ft_sorter(t_pw **pw)
 {
-	if ((*pw)->count > 50 && (*pw)->count < 500)
+	if ((*pw)->count > 50 && (*pw)->count < 250)
 		ft_big_push(pw);
-	else
-		ft_below_50((*pw));
 }
