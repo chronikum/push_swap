@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 12:03:44 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/19 13:50:34 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/19 13:53:20 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ static	void	ft_sub_three(t_pw **arr)
 		ft_rra(arr);
 	if (ft_get_smallest((*(*arr)->a)) == ft_lstvallast((*(*arr)->a)))
 		ft_rra(arr);
+	if (!ft_check_stack_sorted((*(*arr)->a)))
+	{
+		ft_rra(arr);
+		ft_sa(arr);
+	}
 }
 
 static	void	ft_sub_six(t_pw **arr)
