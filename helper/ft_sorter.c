@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/19 10:03:05 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/19 10:43:21 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ void	ft_half_sort(t_pw **arr)
 	}
 }
 
+
 /*
 **	Halfs stack a and sorts them both
-**	Appropiate for 80-250
+**	Appropiate for over 250 and counting
 */
-void	ft_sequential_push(t_pw **arr)
+void	ft_big_push(t_pw **arr)
 {
 	int	total;
 	int	beginning1;
@@ -58,11 +59,26 @@ void	ft_sequential_push(t_pw **arr)
 		ft_rra(arr);
 	ft_ra(arr);
 	while ((*(*arr)->a)->value != beginning2)
+	{
+		if ((*(*arr)->a)->index > (((*arr)->count / 2) / 2))
+			ft_pb(arr);
+		else
+			ft_ra(arr);
+	}
+	beginning1 = ft_get_biggest((*(*arr)->a))->value;
+	ft_half_sort(arr);
+	while (ft_lstvallast((*(*arr)->a))->value != beginning1)
+	{
+		ft_rra(arr);
 		ft_pb(arr);
+	}
 	ft_half_sort(arr);
 }
 
 void	ft_sorter(t_pw **pw)
 {
-	ft_sequential_push(pw);
+	if ((*pw)->count > 100 && (*pw)->count < 500)
+		ft_big_push(pw);
+	else
+		ft_below_50((*pw));
 }
