@@ -40,9 +40,6 @@ void		ft_rra(t_pw **arr);
 void		ft_rrb(t_pw **arr);
 void		ft_rrr(t_pw **arr);
 
-void		ft_pan(t_pw **arr, int amount);
-void		ft_pbn(t_pw **arr, int amount);
-
 int			ft_rstack_index(t_val **stack, int amount, int a);
 
 
@@ -57,11 +54,9 @@ int			ft_find_position(t_val *l, int needle);
 int			ft_findpos_list(t_val *l, int n);
 void		ft_sorter(t_pw **pw);
 
-
 void		ft_below_50(t_pw *arr);
 
 void		ft_bubble_sort(int arr[], int n);
 void		ft_stoip(t_val *t, int **res);
 
-void		ft_rsort(t_pw **pw);
 #endif
