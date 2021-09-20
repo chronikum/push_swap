@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 11:56:38 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 12:36:19 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 14:32:24 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 void	ft_split_quarter(t_pw **arr, int d, int q, int stopper)
 {
 	int	total;
-	int size;
-	int quarter;
+	int	size;
+	int	quarter;
 
 	size = ft_lstvalsize((*(*arr)->a));
 	total = 0;

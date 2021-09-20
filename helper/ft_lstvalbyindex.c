@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 10:07:43 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 10:09:28 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 14:32:36 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 */
 t_val	*ft_lstvalbyindex(t_val *lst, int index)
 {
-	int i;
+	int		i;
 	t_val	*last;
 
 	i = 0;
-
 	last = lst;
 	while (lst)
 	{

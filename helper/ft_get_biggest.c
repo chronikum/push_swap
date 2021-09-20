@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 12:18:21 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/13 13:30:22 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 14:31:03 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 */
 t_val	*ft_get_biggest(t_val *l)
 {
-	t_val *biggest;
-	t_val *next;
+	t_val	*biggest;
+	t_val	*next;
 
 	next = l;
 	biggest = next;
@@ -28,6 +28,5 @@ t_val	*ft_get_biggest(t_val *l)
 			biggest = next;
 		next = next->next;
 	}
-
-	return biggest;
+	return (biggest);
 }
