@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 12:32:41 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 12:39:54 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 17:37:05 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_bubble_sort(int arr[], int n)
 	int	i;
 	int	j;
 
+	if (!arr)
+		return ;
 	i = 0;
 	while (i < n - 1)
 	{

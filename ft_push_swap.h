@@ -10,7 +10,6 @@ typedef struct s_pw
 	t_val **a;
 	t_val **b;
 	int started_b;
-	int	*or_arr;
 	int	count;
 	int	argc;
 	t_list *ops;
@@ -26,7 +25,7 @@ int			ft_exit_error(void);
 
 void		ft_free_and_increase_counter(int *total, int *inner, char ***split);
 
-void		ft_arr_lnklst(t_pw **pw);
+int			ft_arr_lnklst(t_pw **pw);
 
 void		ft_sa(t_pw **arr);
 void		ft_sb(t_pw **arr);

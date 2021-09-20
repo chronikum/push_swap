@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:39:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/14 15:09:54 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 17:29:55 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static int	ft_is_number(char *c)
 
 /*
 **	Checks the array to be only digits
-**	@TODO: CHECK IF
 */
 static int	ft_check_digits(char **argv, int argc)
 {
@@ -66,7 +65,7 @@ static int	ft_check_digits(char **argv, int argc)
 					return (0);
 			}
 			i[1] += i[2];
-			free(split);
+			free((*split));
 		}
 		else
 			i[1]++;

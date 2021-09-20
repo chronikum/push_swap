@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 17:26:45 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 17:53:36 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ static int	ft_free_array(t_pw **array_d, int ret, int err)
 	if (!array_d && array)
 	{
 		free((*array)->arr);
+		free((*array)->a);
+		free((*array)->b);
+		free((*array)->ops);
 		free((*array));
 	}
 	return (ret);
@@ -100,7 +103,6 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 	total = ft_number_total(argv, argc);
 	(*arr) = malloc(sizeof(t_pw));
 	(*arr)->arr = malloc(sizeof(int) * total);
-	(*arr)->or_arr = malloc(sizeof(int) * total);
 	(*arr)->a = malloc(sizeof(t_val *));
 	counter = 0;
 	while (counter < total)
@@ -109,7 +111,6 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 		if (ft_validate_number(str) == 0)
 			return (0);
 		(*arr)->arr[((counter))] = number;
-		(*arr)->or_arr[((counter))] = number;
 		counter++;
 	}
 	(*arr)->count = total;
@@ -167,8 +168,9 @@ int	main(int argc, char **argv)
 		return (ft_free_array(NULL, 1, 1));
 	if (ft_check_is_sorted(arr))
 		return (ft_free_array(NULL, 0, 0));
-	ft_arr_lnklst(&arr);
-	ft_sorter(&arr);
-	// ft_free_array(NULL, 0, 0);
+	if (ft_arr_lnklst(&arr))
+		ft_sorter(&arr);
+	ft_free_array(NULL, 0, 0);
+	// system("leaks push_swap");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:25:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 14:31:35 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 17:39:08 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_find_in_array(int *i, int needle, int size)
 **	Fills the linked list a in the t_pw struct with the numbers
 **	of int array arr. Also mallocs the empty b stack.
 */
-void	ft_arr_lnklst(t_pw **pw)
+int	ft_arr_lnklst(t_pw **pw)
 {
 	t_val	**a;
 	int		i;
@@ -34,10 +34,12 @@ void	ft_arr_lnklst(t_pw **pw)
 	int		index;
 
 	i = 0;
-	(*pw)->b = malloc(sizeof(t_val));
 	array = ft_memdup(((*pw)->arr), sizeof(int *) * (*pw)->count);
 	ft_bubble_sort(array, (*pw)->count);
+	(*pw)->b = malloc(sizeof(t_val));
 	a = malloc(sizeof(t_val *));
+	if (!array || !a || !(*pw)->b)
+		return (0);
 	while (i < (*pw)->count)
 	{
 		index = ft_find_in_array(array, (*pw)->arr[i], (*pw)->count);
@@ -49,4 +51,5 @@ void	ft_arr_lnklst(t_pw **pw)
 	}
 	(*pw)->a = a;
 	free(array);
+	return (1);
 }
