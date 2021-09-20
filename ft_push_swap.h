@@ -49,7 +49,6 @@ t_val		*ft_biggest_until(t_val *l, int x);
 int			ft_find_position(t_val *l, int needle);
 t_val		*ft_lstvalbyindex(t_val *lst, int index);
 
-int			ft_findpos_list(t_val *l, int n);
 void		ft_sorter(t_pw **pw);
 void		ft_half_sort(t_pw **arr);
 void		ft_split_half(t_pw **arr);
