@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 17:56:24 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 18:06:31 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,6 @@ int	main(int argc, char **argv)
 	if (ft_arr_lnklst(&arr))
 		ft_sorter(&arr);
 	ft_free_array(NULL, 0, 0);
-	// system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }
