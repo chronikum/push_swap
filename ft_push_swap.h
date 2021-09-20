@@ -39,8 +39,6 @@ void		ft_rr(t_pw **arr);
 void		ft_rra(t_pw **arr);
 void		ft_rrb(t_pw **arr);
 void		ft_rrr(t_pw **arr);
-
-void		ft_print_stack(t_val *t);
 int			ft_check_stack_sorted(t_val *l);
 
 t_val		*ft_get_smallest(t_val *l);

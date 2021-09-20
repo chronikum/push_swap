@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 11:49:18 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/10 12:18:17 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 14:27:28 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 */
 t_val	*ft_get_smallest(t_val *l)
 {
-	t_val *smallest;
-	t_val *next;
+	t_val	*smallest;
+	t_val	*next;
 
 	next = l;
 	smallest = next;
@@ -28,6 +28,5 @@ t_val	*ft_get_smallest(t_val *l)
 			smallest = next;
 		next = next->next;
 	}
-
-	return smallest;
+	return (smallest);
 }
