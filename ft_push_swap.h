@@ -61,7 +61,6 @@ void		ft_bigger_push(t_pw **arr);
 void		ft_below_50(t_pw *arr);
 
 void		ft_bubble_sort(int arr[], int n);
-void		ft_stoip(t_val *t, int **res);
 
 void		ft_rrl(t_val **l, int is_a);
 
