@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 16:59:10 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 12:28:18 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 12:39:41 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_bigger_push(t_pw **arr)
 	int	beginning1;
 	int	beginning2;
 
-	ft_split_quarter(arr, 3, -1000);
+	ft_split_quarter(arr, 5, 4, -1000);
 	beginning1 = ft_get_biggest((*(*arr)->b))->index;
 	beginning2 = ft_get_smallest((*(*arr)->b))->index;
 	ft_half_sort(arr);
@@ -41,7 +41,7 @@ void	ft_bigger_push(t_pw **arr)
 		ft_ra(arr);
 	ft_ra(arr);
 
-	ft_split_quarter(arr, 2, beginning2);
+	ft_split_quarter(arr, 5, 3, beginning2);
 	beginning1 = ft_get_biggest((*(*arr)->a))->index;
 	beginning2 = ft_get_smallest((*(*arr)->b))->index;
 	ft_half_sort(arr);
@@ -49,16 +49,32 @@ void	ft_bigger_push(t_pw **arr)
 		ft_ra(arr);
 	ft_ra(arr);
 
-	ft_split_quarter(arr, 1, beginning2);
+	ft_split_quarter(arr, 5, 2, beginning2);
 	beginning1 = ft_get_biggest((*(*arr)->a))->index;
 	beginning2 = ft_get_smallest((*(*arr)->b))->index;
 	ft_half_sort(arr);
 	while (beginning1 != (*(*arr)->a)->index)
 		ft_rra(arr);
 	ft_ra(arr);
-	ft_split_quarter(arr, 0, beginning2);
+
+	ft_split_quarter(arr, 5, 1, beginning2);
+	beginning1 = ft_get_biggest((*(*arr)->a))->index;
+	beginning2 = ft_get_smallest((*(*arr)->b))->index;
 	ft_half_sort(arr);
-	ft_rra(arr);
+	while (beginning1 != (*(*arr)->a)->index)
+		ft_rra(arr);
+	ft_ra(arr);
+
+	ft_split_quarter(arr, 5, 0, beginning2);
+	beginning1 = ft_get_biggest((*(*arr)->a))->index;
+	beginning2 = ft_get_smallest((*(*arr)->b))->index;
+	ft_half_sort(arr);
+	while (beginning1 != (*(*arr)->a)->index)
+		ft_rra(arr);
+	ft_ra(arr);
+	// ft_split_quarter(arr, 5, 1, beginning2);
+	// ft_half_sort(arr);
+	// ft_ra(arr);
 
 	// ft_ra(arr);
 	// beginning1 = ft_get_smallest((*(*arr)->a))->index;

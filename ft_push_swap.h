@@ -53,7 +53,7 @@ int			ft_findpos_list(t_val *l, int n);
 void		ft_sorter(t_pw **pw);
 void		ft_half_sort(t_pw **arr);
 void		ft_split_half(t_pw **arr);
-void		ft_split_quarter(t_pw **arr, int q, int stopper);
+void		ft_split_quarter(t_pw **arr, int d, int q, int stopper);
 void		ft_small_sort(t_pw **arr);
 int			ft_check_three_rev_sorted(t_pw **arr);
 

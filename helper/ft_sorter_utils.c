@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 11:56:38 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 11:54:00 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 12:36:19 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	Splits stack a in half using the index
 **	value of every element splitten by the size of array a
 */
-void	ft_split_quarter(t_pw **arr, int q, int stopper)
+void	ft_split_quarter(t_pw **arr, int d, int q, int stopper)
 {
 	int	total;
 	int size;
@@ -24,7 +24,7 @@ void	ft_split_quarter(t_pw **arr, int q, int stopper)
 
 	size = ft_lstvalsize((*(*arr)->a));
 	total = 0;
-	quarter = ((*arr)->count / 4) * q;
+	quarter = ((*arr)->count / d) * q;
 	while ((*(*arr)->a)->index != stopper && (total < (*arr)->count))
 	{
 		if ((*(*arr)->a)->index > quarter)
