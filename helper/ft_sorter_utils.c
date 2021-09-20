@@ -6,12 +6,34 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 11:56:38 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/19 15:55:31 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 11:14:15 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
+/*
+**	Splits stack a in half using the index
+**	value of every element splitten by the size of array a
+*/
+void	ft_split_quarter(t_pw **arr, int q, int stopper)
+{
+	int	total;
+	int size;
+	int quarter;
+
+	size = ft_lstvalsize((*(*arr)->a));
+	total = 0;
+	quarter = ((*arr)->count / 4) * q;
+	while ((*(*arr)->a)->value != stopper && (total < (*arr)->count))
+	{
+		if ((*(*arr)->a)->index > quarter)
+			ft_pb(arr);
+		else
+			ft_ra(arr);
+		total++;
+	}
+}
 
 /*
 **	Splits stack a in half using the index

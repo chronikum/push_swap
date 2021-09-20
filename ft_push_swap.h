@@ -47,17 +47,23 @@ t_val		*ft_get_smallest(t_val *l);
 t_val		*ft_get_biggest(t_val *l);
 t_val		*ft_biggest_until(t_val *l, int x);
 int			ft_find_position(t_val *l, int needle);
+t_val		*ft_lstvalbyindex(t_val *lst, int index);
 
 int			ft_findpos_list(t_val *l, int n);
 void		ft_sorter(t_pw **pw);
 void		ft_half_sort(t_pw **arr);
 void		ft_split_half(t_pw **arr);
+void		ft_split_quarter(t_pw **arr, int q, int stopper);
 void		ft_small_sort(t_pw **arr);
 int			ft_check_three_rev_sorted(t_pw **arr);
+
+void		ft_bigger_push(t_pw **arr);
 
 void		ft_below_50(t_pw *arr);
 
 void		ft_bubble_sort(int arr[], int n);
 void		ft_stoip(t_val *t, int **res);
+
+void		ft_rrl(t_val **l, int is_a);
 
 #endif
