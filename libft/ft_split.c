@@ -6,14 +6,12 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:15:44 by jfritz            #+#    #+#             */
-/*   Updated: 2021/06/23 13:19:58 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 19:03:46 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-size_t	ft_strlen(const char *s);
 
 int	ft_create_result(char ***result, char *s)
 {

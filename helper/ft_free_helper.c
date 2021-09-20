@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_and_increase_counter.c                     :+:      :+:    :+:   */
+/*   ft_free_helper.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/14 15:20:55 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 19:41:59 by jfritz           ###   ########.fr       */
+/*   Created: 2021/09/20 19:42:09 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/20 19:42:30 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
-void	ft_free_and_increase_counter(int *total, int *inner)
+void	ft_single_free(char **string)
 {
-	(*total) += ((*inner) - 1);
+	if (!string)
+		return ;
+	free(*string);
+	*string = 0;
+}
+
+void	ft_double_free(char	**string)
+{
+	int	i;
+
+	i = 0;
+	if (!string)
+		return ;
+	while (string[i] != NULL)
+	{
+		ft_single_free(&string[i]);
+		i++;
+	}
+	free(string);
+	string = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 18:06:31 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/20 19:44:38 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 {
 	char	**split;
 	int		i[3];
+	int		save;
 
 	ft_init_helper_array(i);
 	while (i[0] < (argc - 1))
@@ -47,13 +48,17 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 		if (ft_strchr(argv[i[0] + 1], ' '))
 		{
 			split = ft_split(argv[i[0] + 1], ' ');
-			while (split[i[2]++] != NULL)
+			while (split[i[2]++] != NULL && split)
 			{
 				(*c) = split[(i[2] - 1)];
 				if (pos == (i[1] + (i[2] - 1)))
-					return (ft_atoi(split[(i[2] - 1)]));
+				{
+					save = ft_atoi(split[(i[2] - 1)]);
+					ft_double_free(split);
+					return (save);
+				}
 			}
-			ft_free_and_increase_counter(&i[1], &i[2], &split);
+			ft_free_and_increase_counter(&i[1], &i[2]);
 		}
 		else
 		{
@@ -84,7 +89,6 @@ static int	ft_free_array(t_pw **array_d, int ret, int err)
 		free((*array)->arr);
 		free((*array)->a);
 		free((*array)->b);
-		free((*array)->ops);
 		free((*array));
 	}
 	return (ret);
@@ -170,6 +174,8 @@ int	main(int argc, char **argv)
 		return (ft_free_array(NULL, 0, 0));
 	if (ft_arr_lnklst(&arr))
 		ft_sorter(&arr);
+	ft_clear(arr->a);
+	ft_clear(arr->b);
 	ft_free_array(NULL, 0, 0);
 	system("leaks push_swap");
 	return (0);

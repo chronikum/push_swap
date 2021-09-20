@@ -9,10 +9,7 @@ typedef struct s_pw
 	int	*arr;
 	t_val **a;
 	t_val **b;
-	int started_b;
 	int	count;
-	int	argc;
-	t_list *ops;
 }	t_pw;
 
 int			ft_check_input(char **argv, int argc);
@@ -23,7 +20,7 @@ void		ft_init_helper_array(int i[3]);
 int			ft_number_total(char **argv, int argc);
 int			ft_exit_error(void);
 
-void		ft_free_and_increase_counter(int *total, int *inner, char ***split);
+void		ft_free_and_increase_counter(int *total, int *inner);
 
 int			ft_arr_lnklst(t_pw **pw);
 
@@ -60,5 +57,8 @@ void		ft_below_50(t_pw *arr);
 void		ft_bubble_sort(int arr[], int n);
 
 void		ft_rrl(t_val **l, int is_a);
+void		ft_clear(t_val **l);
+
+void		ft_double_free(char	**string);
 
 #endif
