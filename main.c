@@ -6,12 +6,20 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/21 10:29:13 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 11:22:03 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include <stdio.h>
+
+t_pw **ft_current_pw(t_pw **arr)
+{
+	static t_pw **current;
+	if (arr)
+		current = arr;
+	return (current);
+}
 
 /*
 **	Validates if number received is the actual value or not
@@ -37,8 +45,9 @@ static int	ft_validate_number(char *n)
 */
 static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 {
-	char	**split;
+	// char	**split;
 	int		i[3];
+
 
 	ft_init_helper_array(i);
 	while (i[0] < (argc - 1))
@@ -46,12 +55,14 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 		i[2] = 0;
 		if (ft_strchr(argv[i[0] + 1], ' '))
 		{
-			split = ft_split(argv[i[0] + 1], ' ');
-			while (split[i[2]++] != NULL && split)
+			(*ft_current_pw(NULL))->split = ft_split(argv[i[0] + 1], ' ');
+			while ((*ft_current_pw(NULL))->split[i[2]++] != NULL)
 			{
-				(*c) = split[(i[2] - 1)];
+				(*c) = (*ft_current_pw(NULL))->split[(i[2] - 1)];
 				if (pos == (i[1] + (i[2] - 1)))
-					return (ft_atoi_free(split[(i[2] - 1)]));
+				{
+					return (ft_atoi_free((*ft_current_pw(NULL))->split[(i[2] - 1)]));
+				}
 			}
 			ft_free_and_increase_counter(&i[1], &i[2]);
 		}
@@ -159,6 +170,8 @@ int	main(int argc, char **argv)
 	t_pw	*arr;
 	int		valid;
 
+
+	ft_current_pw(&arr);
 	if (!ft_check_input(argv, argc))
 		return (ft_exit_error());
 	valid = ft_fill_array(&arr, argv, argc);

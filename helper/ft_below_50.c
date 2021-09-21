@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 09:00:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 14:24:45 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 11:23:07 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_below_50(t_pw *arr)
 		position = ft_find_position((*arr->b), biggest->value);
 		while ((*arr->b)->value != biggest->value)
 		{
-			if (position < (ft_lstvalsize((*arr->b)) / 2))
+			if (position <= (ft_lstvalsize((*arr->b)) / 2))
 				ft_rb(&arr);
 			else
 				ft_rrb(&arr);

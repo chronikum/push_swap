@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 19:42:09 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 19:42:30 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 11:19:26 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_double_free(char	**string)
 
 	i = 0;
 	if (!string)
+		return ;
+	if (!string[i])
 		return ;
 	while (string[i] != NULL)
 	{
