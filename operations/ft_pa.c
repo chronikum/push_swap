@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:50:40 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 17:51:59 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 15:42:21 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_pa(t_pw **arr)
 
 	a = (*(*arr)->a);
 	b = (*(*arr)->b);
-	temp = (*(*arr)->b)->next;
 	if (ft_lstvalsize(b) != 0)
 	{
 		ft_lstvaladd_front((*arr)->a, ft_lstvalnew(b->value, b->index));
+		temp = (*(*arr)->b)->next;
 		free((*(*arr)->b));
 		(*(*arr)->b) = temp;
 		write(1, "pa\n", 3);

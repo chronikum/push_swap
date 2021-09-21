@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/21 15:20:58 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 15:39:00 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,9 +178,9 @@ int	main(int argc, char **argv)
 		return (ft_free_array(NULL, 0, 0, 0));
 	if (ft_arr_lnklst(&arr))
 		ft_sorter(&arr);
-	ft_clear(arr->a);
-	ft_clear(arr->b);
-	ft_free_array(NULL, 0, 0, 1);
+	// ft_clear(arr->a);
+	// ft_clear(arr->b);
+	// ft_free_array(NULL, 0, 0, 1);
 	// system("leaks push_swap");
 	return (0);
 }
