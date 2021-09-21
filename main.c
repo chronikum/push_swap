@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 19:44:38 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 10:29:13 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ int	main(int argc, char **argv)
 	if (!ft_check_duplicate(arr) || (valid == 0))
 		return (ft_free_array(NULL, 1, 1, 0));
 	if (ft_check_is_sorted(arr))
-		return (ft_free_array(NULL, 0, 0, 1));
+		return (ft_free_array(NULL, 0, 0, 0));
 	if (ft_arr_lnklst(&arr))
 		ft_sorter(&arr);
 	ft_clear(arr->a);
