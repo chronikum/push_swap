@@ -62,10 +62,12 @@ static int	ft_check_digits(char **argv, int argc)
 			while (split[i[2]] != NULL)
 			{
 				if (!ft_is_number(split[i[2]++]))
+				{
+					ft_double_free(split);
 					return (0);
+				}
 			}
 			i[1] += i[2];
-			ft_double_free(split);
 		}
 		else
 			i[1]++;

@@ -60,5 +60,6 @@ void		ft_rrl(t_val **l, int is_a);
 void		ft_clear(t_val **l);
 
 void		ft_double_free(char	**string);
+int			ft_atoi_free(char *str);
 
 #endif

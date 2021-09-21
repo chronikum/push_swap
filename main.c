@@ -39,7 +39,6 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 {
 	char	**split;
 	int		i[3];
-	int		save;
 
 	ft_init_helper_array(i);
 	while (i[0] < (argc - 1))
@@ -52,11 +51,7 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 			{
 				(*c) = split[(i[2] - 1)];
 				if (pos == (i[1] + (i[2] - 1)))
-				{
-					save = ft_atoi(split[(i[2] - 1)]);
-					ft_double_free(split);
-					return (save);
-				}
+					return (ft_atoi_free(split[(i[2] - 1)]));
 			}
 			ft_free_and_increase_counter(&i[1], &i[2]);
 		}
@@ -76,7 +71,7 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 **	free it as soon as called.
 **	Returns the integer supplied with.
 */
-static int	ft_free_array(t_pw **array_d, int ret, int err)
+static int	ft_free_array(t_pw **array_d, int ret, int err, int free_it)
 {
 	static t_pw	**array;
 
@@ -84,7 +79,7 @@ static int	ft_free_array(t_pw **array_d, int ret, int err)
 		ft_exit_error();
 	if (array_d)
 		array = array_d;
-	if (!array_d && array)
+	if (!array_d && array && free_it)
 	{
 		free((*array)->arr);
 		free((*array)->a);
@@ -121,39 +116,39 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 	return (1);
 }
 
-void print_stack_a(t_pw *pw)
-{
-	t_val *t;
-	int x;
+// void print_stack_a(t_pw *pw)
+// {
+// 	t_val *t;
+// 	int x;
 
-	t = (*pw->a);
-	ft_putendl_fd("STACK A", 1);
-	printf("COUNT: %d \n", ft_lstvalsize((*pw->a)));
-	while (t)
-	{
-		x = t->value;
-		ft_putstr_fd("\n", 1);
-		ft_putnbr_fd(x, 1);
-		t = t->next;
-	}
-}
+// 	t = (*pw->a);
+// 	ft_putendl_fd("STACK A", 1);
+// 	printf("COUNT: %d \n", ft_lstvalsize((*pw->a)));
+// 	while (t)
+// 	{
+// 		x = t->value;
+// 		ft_putstr_fd("\n", 1);
+// 		ft_putnbr_fd(x, 1);
+// 		t = t->next;
+// 	}
+// }
 
-void print_stack_b(t_pw *pw)
-{
-	t_val *t;
-	int x;
+// void print_stack_b(t_pw *pw)
+// {
+// 	t_val *t;
+// 	int x;
 
-	t = (*pw->b);
-	ft_putendl_fd("STACK B", 1);
-	printf("COUNT: %d \n", ft_lstvalsize((*pw->b)));
-	while (t)
-	{
-		x = t->value;
-		ft_putnbr_fd(x, 1);
-		ft_putstr_fd("\n", 1);
-		t = t->next;
-	}
-}
+// 	t = (*pw->b);
+// 	ft_putendl_fd("STACK B", 1);
+// 	printf("COUNT: %d \n", ft_lstvalsize((*pw->b)));
+// 	while (t)
+// 	{
+// 		x = t->value;
+// 		ft_putnbr_fd(x, 1);
+// 		ft_putstr_fd("\n", 1);
+// 		t = t->next;
+// 	}
+// }
 
 /*
 **	Read in input from user and validate it.
@@ -167,16 +162,16 @@ int	main(int argc, char **argv)
 	if (!ft_check_input(argv, argc))
 		return (ft_exit_error());
 	valid = ft_fill_array(&arr, argv, argc);
-	ft_free_array(&arr, 0, 0);
+	ft_free_array(&arr, 0, 0, 1);
 	if (!ft_check_duplicate(arr) || (valid == 0))
-		return (ft_free_array(NULL, 1, 1));
+		return (ft_free_array(NULL, 1, 1, 0));
 	if (ft_check_is_sorted(arr))
-		return (ft_free_array(NULL, 0, 0));
+		return (ft_free_array(NULL, 0, 0, 1));
 	if (ft_arr_lnklst(&arr))
 		ft_sorter(&arr);
 	ft_clear(arr->a);
 	ft_clear(arr->b);
-	ft_free_array(NULL, 0, 0);
+	ft_free_array(NULL, 0, 0, 1);
 	// system("leaks push_swap");
 	return (0);
 }

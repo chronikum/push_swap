@@ -18,6 +18,5 @@
 int	ft_exit_error(void)
 {
 	ft_putstr_fd("Error", 2);
-	system("leaks push_swap");
 	return (1);
 }
