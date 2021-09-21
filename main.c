@@ -177,6 +177,6 @@ int	main(int argc, char **argv)
 	ft_clear(arr->a);
 	ft_clear(arr->b);
 	ft_free_array(NULL, 0, 0);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (0);
 }
