@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 08:40:16 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/21 11:20:39 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 15:20:29 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_sorter(t_pw **pw)
 {
-	if ((*pw)->count > 1 && (*pw)->count < 11)
+	if ((*pw)->count > 1 && (*pw)->count < 6)
 		ft_small_sort(pw);
 	else
 		ft_bigger_push(pw);

@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:25:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/21 15:10:59 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 15:21:16 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	ft_arr_lnklst(t_pw **pw)
 
 	i = 0;
 	array = ft_memdup(((*pw)->arr), sizeof(int *) * (*pw)->count);
-	printf("Total count: %d\n", (*pw)->count);
 	ft_bubble_sort(array, (*pw)->count);
 	(*pw)->b = malloc(sizeof(t_val));
 	a = malloc(sizeof(t_val *));

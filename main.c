@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/21 15:13:25 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/21 15:20:58 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 	while (counter < total)
 	{
 		number = ft_atoi(arr_i[counter + 1]);
-		printf("%s is now %d\n", arr_i[counter + 1], number);
 		(*arr)->arr[((counter))] = number;
 		counter++;
 	}
