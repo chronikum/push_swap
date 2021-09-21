@@ -13,6 +13,15 @@ typedef struct s_pw
 	char **split;
 }	t_pw;
 
+typedef struct s_parser
+{
+	int		i;
+	int		j;
+	char	*tmp;
+	char	*tmp2;
+	char	*str;
+}	t_parser;
+
 int			ft_check_input(char **argv, int argc);
 int			ft_check_duplicate(t_pw *arr);
 int			ft_check_is_sorted(t_pw *arr);
@@ -61,6 +70,7 @@ void		ft_rrl(t_val **l, int is_a);
 void		ft_clear(t_val **l);
 
 void		ft_double_free(char	**string);
+void		ft_single_free(char **string);
 int			ft_atoi_free(char *str);
 
 #endif
