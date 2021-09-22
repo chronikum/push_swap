@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:25:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/21 15:50:11 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/22 16:21:33 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	ft_find_in_array(int *i, int needle, int size)
 */
 int	ft_arr_lnklst(t_pw **pw)
 {
-	t_val	**a;
 	int		i;
 	int		*array;
 	int		index;
@@ -37,19 +36,17 @@ int	ft_arr_lnklst(t_pw **pw)
 	array = ft_memdup(((*pw)->arr), sizeof(int *) * (*pw)->count);
 	ft_bubble_sort(array, (*pw)->count);
 	(*pw)->b = malloc(sizeof(t_val));
-	a = malloc(sizeof(t_val *));
-	if (!array || !a || !(*pw)->b)
+	if (!array || !(*pw)->b)
 		return (0);
 	while (i < (*pw)->count)
 	{
 		index = ft_find_in_array(array, (*pw)->arr[i], (*pw)->count);
 		if (i == 0)
-			(*a) = ft_lstvalnew((int)(*pw)->arr[0], index);
+			(*(*pw)->a) = ft_lstvalnew((int)(*pw)->arr[0], index);
 		else
-			ft_lstvaladd_back(a, ft_lstvalnew((int)(*pw)->arr[i], index));
+			ft_lstvaladd_back((*pw)->a, ft_lstvalnew((int)(*pw)->arr[i], index));
 		i++;
 	}
-	(*pw)->a = a;
 	free(array);
 	return (1);
 }
