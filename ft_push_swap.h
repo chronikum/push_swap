@@ -30,7 +30,7 @@ void		ft_init_helper_array(int i[3]);
 int			ft_number_total(char **argv, int argc);
 int			ft_exit_error(void);
 
-void		ft_free_and_increase_counter(int *total, int *inner);
+void		ft_free_and_increase_counter(int *total, int *inner, char **split);
 
 int			ft_arr_lnklst(t_pw **pw);
 

@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 15:06:00 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/22 16:14:04 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/22 16:42:52 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@
 int	ft_exit_error(void)
 {
 	ft_putstr_fd("Error", 2);
-	system("leaks push_swap");
 	return (1);
 }

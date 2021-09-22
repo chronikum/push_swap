@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/22 16:26:16 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/22 17:02:43 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
  					return (ft_atoi_free(split[(i[2] - 1)]));
  				}
  			}
- 			ft_free_and_increase_counter(&i[1], &i[2]);
+
+ 			ft_free_and_increase_counter(&i[1], &i[2], split);
  		}
 		else
 		{
@@ -126,6 +127,7 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 		(*arr)->arr[((counter))] = number;
 		counter++;
 	}
+	system("leaks push_swap");
 	(*arr)->count = total;
 	return (1);
 }

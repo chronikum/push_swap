@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:39:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 19:44:04 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/22 16:27:28 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static int	ft_check_digits(char **argv, int argc)
 					ft_double_free(split);
 					return (0);
 				}
+				ft_double_free(split);
 			}
 			i[1] += i[2];
 		}
