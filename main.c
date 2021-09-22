@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/21 15:39:00 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/22 13:25:22 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,77 @@
 **	Validates if number received is the actual value or not
 **	This can happen if a number exceeds the maximal or minimal integer.
 */
-// static int	ft_validate_number(char *n)
-// {
-// 	long long	number_long;
-// 	int			number_int;
-
-// 	number_int = ft_atoi(n);
-// 	number_long = ft_ll_atoi(n);
-// 	if (number_int == number_long)
-// 		return (1);
-// 	return (0);
-// }
-
-char	**ft_input_parser(char **argv)
+static int	ft_validate_number(char *n)
 {
-	t_parser	var;
-	char		**arr;
+	long long	number_long;
+	int			number_int;
 
-	var.i = 0;
-	var.str = ft_strdup("");
-	while (argv[var.i] != '\0')
-	{
-		arr = ft_split(argv[var.i], ' ');
-		var.j = 0;
-		while (arr[var.j] != '\0')
+	number_int = ft_atoi(n);
+	number_long = ft_ll_atoi(n);
+	if (number_int == number_long)
+		return (1);
+	return (0);
+}
+
+// char	**ft_input_parser(char **argv)
+// {
+// 	t_parser	var;
+// 	char		**arr;
+
+// 	var.i = 0;
+// 	var.str = ft_strdup("");
+// 	while (argv[var.i] != '\0')
+// 	{
+// 		arr = ft_split(argv[var.i], ' ');
+// 		var.j = 0;
+// 		while (arr[var.j] != '\0')
+// 		{
+// 			var.tmp = ft_strjoin(arr[var.j], ",");
+// 			var.tmp2 = var.str;
+// 			var.str = ft_strjoin(var.tmp2, var.tmp);
+// 			ft_single_free(&var.tmp);
+// 			ft_single_free(&var.tmp2);
+// 			var.j++;
+// 		}
+// 		ft_double_free(arr);
+// 		var.i++;
+// 	}
+// 	arr = ft_split(var.str, ',');
+// 	ft_single_free(&var.str);
+// 	return (arr);
+// }
+static int	ft_number_pos(char **argv, int argc, int pos, char **c)
+ {
+ 	char	**split;
+ 	int		i[3];
+
+
+ 	ft_init_helper_array(i);
+ 	while (i[0] < (argc - 1))
+ 	{
+ 		i[2] = 0;
+ 		if (ft_strchr(argv[i[0] + 1], ' '))
+ 		{
+ 			split = ft_split(argv[i[0] + 1], ' ');
+ 			while (split[i[2]++] != NULL)
+ 			{
+ 				(*c) = split[(i[2] - 1)];
+ 				if (pos == (i[1] + (i[2] - 1)))
+ 				{
+ 					return (ft_atoi_free(split[(i[2] - 1)]));
+ 				}
+ 			}
+ 			ft_free_and_increase_counter(&i[1], &i[2]);
+ 		}
+		else
 		{
-			var.tmp = ft_strjoin(arr[var.j], ",");
-			var.tmp2 = var.str;
-			var.str = ft_strjoin(var.tmp2, var.tmp);
-			ft_single_free(&var.tmp);
-			ft_single_free(&var.tmp2);
-			var.j++;
+			(*c) = argv[i[0] + 1];
+			if (i[1]++ == pos)
+				return (ft_atoi(argv[i[0] + 1]));
 		}
-		ft_double_free(arr);
-		var.i++;
+		i[0]++;
 	}
-	arr = ft_split(var.str, ',');
-	ft_single_free(&var.str);
-	return (arr);
+	return (i[1]);
 }
 
 /*
@@ -102,22 +135,44 @@ static int	ft_free_array(t_pw **array_d, int ret, int err, int free_it)
 **	Fill the array with the given values.
 **	TODO; Check for overflow
 */
+// static int	ft_fill_array(t_pw **arr, char **argv, int argc)
+// {
+// 	int		counter;
+// 	int		total;
+// 	int 	number;
+// 	char	**arr_i;
+
+// 	total = ft_number_total(argv, argc);
+// 	arr_i = ft_input_parser(argv);
+// 	(*arr) = malloc(sizeof(t_pw));
+// 	(*arr)->arr = malloc(sizeof(int) * total);
+// 	(*arr)->a = malloc(sizeof(t_val *));
+// 	counter = 0;
+// 	while (counter < total)
+// 	{
+// 		number = ft_atoi(arr_i[counter + 1]);
+// 		(*arr)->arr[((counter))] = number;
+// 		counter++;
+// 	}
+// 	(*arr)->count = total;
+// 	return (1);
+// }
 static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 {
-	int		counter;
-	int		total;
-	int 	number;
-	char	**arr_i;
-
+	int	counter;
+	int	total;
+	int number;
+	char *str;
 	total = ft_number_total(argv, argc);
-	arr_i = ft_input_parser(argv);
 	(*arr) = malloc(sizeof(t_pw));
 	(*arr)->arr = malloc(sizeof(int) * total);
 	(*arr)->a = malloc(sizeof(t_val *));
 	counter = 0;
 	while (counter < total)
 	{
-		number = ft_atoi(arr_i[counter + 1]);
+		number = ft_number_pos(argv, argc, counter, &str);
+		if (ft_validate_number(str) == 0)
+			return (0);
 		(*arr)->arr[((counter))] = number;
 		counter++;
 	}
