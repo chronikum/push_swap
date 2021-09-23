@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/22 17:02:43 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 15:05:52 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,44 @@ static int	ft_validate_number(char *n)
 	return (0);
 }
 
+static int	ft_number_pos(char **argv, int argc, int pos, int ok)
+{
+	if (ft_strchr(argv[1], ' '))
+	{
 
-static int	ft_number_pos(char **argv, int argc, int pos, char **c)
- {
- 	char	**split;
- 	int		i[3];
-
- 	ft_init_helper_array(i);
- 	while (i[0] < (argc - 1))
- 	{
- 		i[2] = 0;
- 		if (ft_strchr(argv[i[0] + 1], ' '))
- 		{
- 			split = ft_split(argv[i[0] + 1], ' ');
- 			while (split[i[2]++] != NULL)
- 			{
- 				(*c) = split[(i[2] - 1)];
- 				if (pos == (i[1] + (i[2] - 1)))
- 				{
- 					return (ft_atoi_free(split[(i[2] - 1)]));
- 				}
- 			}
-
- 			ft_free_and_increase_counter(&i[1], &i[2], split);
- 		}
-		else
-		{
-			(*c) = argv[i[0] + 1];
-			if (i[1]++ == pos)
-				return (ft_atoi(argv[i[0] + 1]));
-		}
-		i[0]++;
 	}
-	return (i[1]);
 }
+
+//static int	ft_number_pos(char **argv, int argc, int pos, char **c)
+//{
+//	int		i[3];
+//	char	**split;
+
+//	ft_init_helper_array(i);
+//	while (i[0] < (argc - 1))
+//	{
+//		i[2] = 0;
+//		if (ft_strchr(argv[i[0] + 1], ' '))
+//		{
+//			split = ft_split(argv[i[0] + 1], ' ');
+//			while (split[i[2]++] != NULL)
+//			{
+//				(*c) = split[(i[2] - 1)];
+//				if (pos == (i[1] + (i[2] - 1)))
+//					return (ft_atoi_free(split[(i[2] - 1)]));
+//			}
+//			ft_free_and_increase_counter(&i[1], &i[2]);
+//		}
+//		else
+//		{
+//			(*c) = argv[i[0] + 1];
+//			if (i[1]++ == pos)
+//				return (ft_atoi(argv[i[0] + 1]));
+//		}
+//		i[0]++;
+//	}
+//	return (i[1]);
+//}
 
 static int	ft_free_array(t_pw **array_d, int ret, int err, int free_it)
 {
@@ -82,38 +86,13 @@ static int	ft_free_array(t_pw **array_d, int ret, int err, int free_it)
 	return (ret);
 }
 
-/*
-**	Fill the array with the given values.
-**	TODO; Check for overflow
-*/
-// static int	ft_fill_array(t_pw **arr, char **argv, int argc)
-// {
-// 	int		counter;
-// 	int		total;
-// 	int 	number;
-// 	char	**arr_i;
-
-// 	total = ft_number_total(argv, argc);
-// 	arr_i = ft_input_parser(argv);
-// 	(*arr) = malloc(sizeof(t_pw));
-// 	(*arr)->arr = malloc(sizeof(int) * total);
-// 	(*arr)->a = malloc(sizeof(t_val *));
-// 	counter = 0;
-// 	while (counter < total)
-// 	{
-// 		number = ft_atoi(arr_i[counter + 1]);
-// 		(*arr)->arr[((counter))] = number;
-// 		counter++;
-// 	}
-// 	(*arr)->count = total;
-// 	return (1);
-// }
 static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 {
-	int	counter;
-	int	total;
-	int number;
-	char *str;
+	int		counter;
+	int		total;
+	int		number;
+	char	*str;
+
 	total = ft_number_total(argv, argc);
 	(*arr) = malloc(sizeof(t_pw));
 	(*arr)->arr = malloc(sizeof(int) * total);
@@ -127,7 +106,6 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 		(*arr)->arr[((counter))] = number;
 		counter++;
 	}
-	system("leaks push_swap");
 	(*arr)->count = total;
 	return (1);
 }
@@ -145,23 +123,6 @@ void print_stack_a(t_pw *pw)
 		x = t->value;
 		ft_putstr_fd("\n", 1);
 		ft_putnbr_fd(x, 1);
-		t = t->next;
-	}
-}
-
-void print_stack_b(t_pw *pw)
-{
-	t_val *t;
-	int x;
-
-	t = (*pw->b);
-	ft_putendl_fd("STACK B", 1);
-	printf("COUNT: %d \n", ft_lstvalsize((*pw->b)));
-	while (t)
-	{
-		x = t->value;
-		ft_putnbr_fd(x, 1);
-		ft_putstr_fd("\n", 1);
 		t = t->next;
 	}
 }
@@ -185,7 +146,8 @@ int	main(int argc, char **argv)
 		return (ft_free_array(NULL, 0, 0, 0));
 	if (ft_arr_lnklst(&arr))
 		ft_sorter(&arr);
-	ft_clear(arr->a);
-	ft_clear(arr->b);
+	//print_stack_a(arr);
+	//ft_clear(arr->a);
+	//ft_clear(arr->b);
 	return (0);
 }

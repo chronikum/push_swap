@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/23 10:51:43 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/23 15:12:22 by jfritz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PUSH_SWAP_H
 # define FT_PUSH_SWAP_H
 
@@ -6,21 +18,11 @@
 
 typedef struct s_pw
 {
-	int	*arr;
-	t_val **a;
-	t_val **b;
-	int	count;
-	char **split;
+	int		*arr;
+	t_val	**a;
+	t_val	**b;
+	int		count;
 }	t_pw;
-
-typedef struct s_parser
-{
-	int		i;
-	int		j;
-	char	*tmp;
-	char	*tmp2;
-	char	*str;
-}	t_parser;
 
 int			ft_check_input(char **argv, int argc);
 int			ft_check_duplicate(t_pw *arr);
@@ -30,7 +32,7 @@ void		ft_init_helper_array(int i[3]);
 int			ft_number_total(char **argv, int argc);
 int			ft_exit_error(void);
 
-void		ft_free_and_increase_counter(int *total, int *inner, char **split);
+void		ft_free_and_increase_counter(int *total, int *inner);
 
 int			ft_arr_lnklst(t_pw **pw);
 
@@ -72,5 +74,7 @@ void		ft_clear(t_val **l);
 void		ft_double_free(char	**string);
 void		ft_single_free(char **string);
 int			ft_atoi_free(char *str);
+
+int			ft_arg_is_string(char *arg);
 
 #endif
