@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 17:01:19 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:03:43 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 			ft_free_and_increase_counter(&i[1], &i[2], split);
 		}
 		(*c) = argv[i[0] + 1];
-			if (i[1]++ == pos)
-				return (ft_atoi(argv[i[0] + 1]));
+		if (i[1]++ == pos)
+			return (ft_atoi(argv[i[0] + 1]));
 		i[0]++;
 	}
 }
@@ -117,8 +117,7 @@ int	main(int argc, char **argv)
 		return (ft_free_array(NULL, 0, 0, 0));
 	if (ft_arr_lnklst(&arr))
 		ft_sorter(&arr);
-	//print_stack_a(arr);
-	//ft_clear(arr->a);
-	//ft_clear(arr->b);
+	ft_clear(arr->a);
+	ft_clear(arr->b);
 	return (0);
 }
