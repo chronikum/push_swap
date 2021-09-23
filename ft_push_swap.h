@@ -6,21 +6,12 @@
 
 typedef struct s_pw
 {
-	int	*arr;
-	t_val **a;
-	t_val **b;
-	int	count;
-	char **split;
+	int		*arr;
+	t_val	**a;
+	t_val	**b;
+	int		count;
+	char	**split;
 }	t_pw;
-
-typedef struct s_parser
-{
-	int		i;
-	int		j;
-	char	*tmp;
-	char	*tmp2;
-	char	*str;
-}	t_parser;
 
 int			ft_check_input(char **argv, int argc);
 int			ft_check_duplicate(t_pw *arr);
@@ -69,7 +60,7 @@ void		ft_bubble_sort(int arr[], int n);
 void		ft_rrl(t_val **l, int is_a);
 void		ft_clear(t_val **l);
 
-void		ft_double_free(char	**string);
+int			ft_double_free(char	**string);
 void		ft_single_free(char **string);
 int			ft_atoi_free(char *str);
 

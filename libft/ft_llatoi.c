@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 13:42:27 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/18 13:42:32 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:13:31 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	whitespace(char c)
 		|| (c == '\v') || (c == '\f') || (c == '\r') || (c == ' '));
 }
 
-static long long	ft_skip_plus_minus(const char *str, long long p, long long *m)
+static long long	ft_skip_plus_minus(const char *str,
+	long long p, long long *m)
 {
 	int	a;
 

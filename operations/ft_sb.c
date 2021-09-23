@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:17:46 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/13 13:49:20 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:07:45 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 */
 void	ft_sb(t_pw **arr)
 {
-	int temp;
+	int	temp;
+
 	if (!((*arr)->count > 1 || ft_lstvalsize((*(*arr)->b)) < 1))
 		return ;
 	temp = (*(*arr)->b)->value;

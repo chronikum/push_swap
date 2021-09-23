@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 09:40:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 18:19:37 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:10:37 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
 */
 t_val	*ft_biggest_until(t_val *l, int x)
 {
-	t_val *biggest;
-	t_val *next;
-	int count;
-
+	t_val	*biggest;
+	t_val	*next;
+	int		count;
 
 	count = 0;
 	next = l;
@@ -34,6 +33,5 @@ t_val	*ft_biggest_until(t_val *l, int x)
 		next = next->next;
 		count++;
 	}
-
 	return (NULL);
 }

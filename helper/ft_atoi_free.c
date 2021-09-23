@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_free.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/23 16:14:13 by jfritz            #+#    #+#             */
+/*   Updated: 2021/09/23 16:14:19 by jfritz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
-int ft_atoi_free(char *str)
+int	ft_atoi_free(char *str)
 {
-	int atoi;
+	int	atoi;
+
 	atoi = ft_atoi(str);
 	return (atoi);
 }

@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 15:44:04 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:15:59 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,26 @@ static int	ft_validate_number(char *n)
 	return (0);
 }
 
-
 static int	ft_number_pos(char **argv, int argc, int pos, char **c)
- {
- 	char	**split;
- 	int		i[3];
+{
+	char	**split;
+	int		i[3];
 
- 	ft_init_helper_array(i);
- 	while (i[0] < (argc - 1))
- 	{
- 		i[2] = 0;
- 		if (ft_strchr(argv[i[0] + 1], ' '))
- 		{
- 			split = ft_split(argv[i[0] + 1], ' ');
- 			while (split[i[2]++] != NULL)
- 			{
- 				(*c) = split[(i[2] - 1)];
- 				if (pos == (i[1] + (i[2] - 1)))
- 				{
- 					return (ft_atoi_free(split[(i[2] - 1)]));
- 				}
- 			}
-
- 			ft_free_and_increase_counter(&i[1], &i[2], split);
- 		}
+	ft_init_helper_array(i);
+	while (i[0] < (argc - 1))
+	{
+		i[2] = 0;
+		if (ft_strchr(argv[i[0] + 1], ' '))
+		{
+			split = ft_split(argv[i[0] + 1], ' ');
+			while (split[i[2]++] != NULL)
+			{
+				(*c) = split[(i[2] - 1)];
+				if (pos == (i[1] + (i[2] - 1)))
+					return (ft_atoi_free(split[(i[2] - 1)]));
+			}
+			ft_free_and_increase_counter(&i[1], &i[2], split);
+		}
 		else
 		{
 			(*c) = argv[i[0] + 1];
