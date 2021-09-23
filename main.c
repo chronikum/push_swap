@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/22 17:02:43 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 15:44:04 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 		(*arr)->arr[((counter))] = number;
 		counter++;
 	}
-	system("leaks push_swap");
 	(*arr)->count = total;
 	return (1);
 }
@@ -187,5 +186,6 @@ int	main(int argc, char **argv)
 		ft_sorter(&arr);
 	ft_clear(arr->a);
 	ft_clear(arr->b);
+	system("leaks push_swap");
 	return (0);
 }
