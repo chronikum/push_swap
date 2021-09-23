@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:51:43 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 15:12:22 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:01:50 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		ft_bubble_sort(int arr[], int n);
 void		ft_rrl(t_val **l, int is_a);
 void		ft_clear(t_val **l);
 
-void		ft_double_free(char	**string);
+int			ft_double_free(char	**string);
 void		ft_single_free(char **string);
 int			ft_atoi_free(char *str);
 

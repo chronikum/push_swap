@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 09:25:51 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 10:58:46 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:01:59 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	ft_arr_lnklst(t_pw **pw)
 		if (i == 0)
 			(*(*pw)->a) = ft_lstvalnew((int)(*pw)->arr[0], index);
 		else
-			ft_lstvaladd_back((*pw)->a, ft_lstvalnew((int)(*pw)->arr[i], index));
+			ft_lstvaladd_back((*pw)->a,
+				ft_lstvalnew((int)(*pw)->arr[i], index));
 		i++;
 	}
 	free(array);

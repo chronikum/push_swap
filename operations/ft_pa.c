@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:50:40 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 10:26:55 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:02:47 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 */
 void	ft_pa(t_pw **arr)
 {
-	t_val *a;
-	t_val *b;
-	t_val *temp;
+	t_val	*a;
+	t_val	*b;
+	t_val	*temp;
 
 	a = (*(*arr)->a);
 	b = (*(*arr)->b);

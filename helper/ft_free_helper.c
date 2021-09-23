@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 19:42:09 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/21 14:31:41 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:07:18 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	ft_single_free(char **string)
 	*string = 0;
 }
 
-void	ft_double_free(char	**string)
+int	ft_double_free(char	**string)
 {
 	int	i;
 
 	i = 0;
 	if (!string)
-		return ;
+		return (0);
 	if (!string[i])
-		return ;
+		return (0);
 	while (string[i] != NULL)
 	{
 		ft_single_free(&string[i]);
@@ -36,4 +36,5 @@ void	ft_double_free(char	**string)
 	}
 	free(string);
 	string = 0;
+	return (0);
 }

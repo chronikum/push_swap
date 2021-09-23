@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:36:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/07 11:37:48 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:08:44 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** Rotate a and rotate b at the same time
 */
-void ft_rr(t_pw **arr)
+void	ft_rr(t_pw **arr)
 {
 	ft_ra(arr);
 	ft_rb(arr);

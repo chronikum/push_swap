@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 15:05:52 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:01:19 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,32 @@ static int	ft_validate_number(char *n)
 	return (0);
 }
 
-static int	ft_number_pos(char **argv, int argc, int pos, int ok)
+static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 {
-	if (ft_strchr(argv[1], ' '))
-	{
+	char	**split;
+	int		i[3];
 
+	ft_init_helper_array(i);
+	while (i[0] < (argc - 1))
+	{
+		i[2] = 0;
+		if (ft_strchr(argv[i[0] + 1], ' '))
+		{
+			split = ft_split(argv[i[0] + 1], ' ');
+			while (split[i[2]++] != NULL)
+			{
+				(*c) = split[(i[2] - 1)];
+				if (pos == (i[1] + (i[2] - 1)))
+					return (ft_atoi_free(split[(i[2] - 1)]));
+			}
+			ft_free_and_increase_counter(&i[1], &i[2], split);
+		}
+		(*c) = argv[i[0] + 1];
+			if (i[1]++ == pos)
+				return (ft_atoi(argv[i[0] + 1]));
+		i[0]++;
 	}
 }
-
-//static int	ft_number_pos(char **argv, int argc, int pos, char **c)
-//{
-//	int		i[3];
-//	char	**split;
-
-//	ft_init_helper_array(i);
-//	while (i[0] < (argc - 1))
-//	{
-//		i[2] = 0;
-//		if (ft_strchr(argv[i[0] + 1], ' '))
-//		{
-//			split = ft_split(argv[i[0] + 1], ' ');
-//			while (split[i[2]++] != NULL)
-//			{
-//				(*c) = split[(i[2] - 1)];
-//				if (pos == (i[1] + (i[2] - 1)))
-//					return (ft_atoi_free(split[(i[2] - 1)]));
-//			}
-//			ft_free_and_increase_counter(&i[1], &i[2]);
-//		}
-//		else
-//		{
-//			(*c) = argv[i[0] + 1];
-//			if (i[1]++ == pos)
-//				return (ft_atoi(argv[i[0] + 1]));
-//		}
-//		i[0]++;
-//	}
-//	return (i[1]);
-//}
 
 static int	ft_free_array(t_pw **array_d, int ret, int err, int free_it)
 {
@@ -108,23 +96,6 @@ static int	ft_fill_array(t_pw **arr, char **argv, int argc)
 	}
 	(*arr)->count = total;
 	return (1);
-}
-
-void print_stack_a(t_pw *pw)
-{
-	t_val *t;
-	int x;
-
-	t = (*pw->a);
-	ft_putendl_fd("STACK A", 1);
-	printf("COUNT: %d \n", ft_lstvalsize((*pw->a)));
-	while (t)
-	{
-		x = t->value;
-		ft_putstr_fd("\n", 1);
-		ft_putnbr_fd(x, 1);
-		t = t->next;
-	}
 }
 
 /*

@@ -6,67 +6,101 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:15:44 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 15:07:06 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:02:06 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-int	ft_create_result(char ***result, char *s)
+static int	ft_wlc(char const *s, char c, int *pwst)
 {
-	*result = malloc(sizeof(char *) * ft_strlen(s) + 1);
-	if (!*result)
+	int	i;
+	int	j;
+	int	word_len;
+
+	i = *pwst;
+	while (s[i] == c)
+		i++;
+	j = *pwst;
+	while (s[i] != c && s[i] != '\0')
+		i++;
+	word_len = (i - j);
+	return (word_len);
+}
+
+static int	ft_wc(char const *s, char c, int *pwst)
+{
+	int	i;
+	int	words;
+
+	i = 0;
+	while (s[i] == c && s[i] != '\0')
+		i++;
+	*pwst = i;
+	words = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c)
+		{
+			words++;
+			while (s[i] != c)
+			{
+				i++;
+				if (s[i] == '\0')
+					return (words);
+			}
+		}
+		i++;
+	}
+	return (words);
+}
+
+static char	*string_printer(char const *s, char c, int *pwst)
+{
+	int		i;
+	int		word_len;
+	char	*str;
+
+	word_len = ft_wlc(s, c, pwst);
+	str = (char *)malloc((word_len + 1) * sizeof(char));
+	if (str == 0)
 		return (0);
-	return (1);
-}
-
-void	ft_set_zero(int *i, int *j, int *l)
-{
-	*i = 0;
-	*j = 0;
-	*l = 0;
-}
-
-int	ft_jump_to_end(char *s, int i)
-{
-	if (s[i])
+	i = 0;
+	while (i < word_len && s[*pwst] != c)
+	{
+		str[i] = s[*pwst];
 		i++;
-	return (i);
-}
-
-int	ft_jump_to_word_end(char *s, char c, int i)
-{
-	while (s[i] == c && s[i])
-		i++;
-	return (i);
+		*pwst += 1;
+	}
+	while (s[*pwst] == c)
+		*pwst += 1;
+	str[i] = '\0';
+	return (str);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
+	int		word_start;
+	int		words;
 	int		i;
-	int		j;
-	int		l;
+	char	**result;
+	char	*string;
 
-	ft_set_zero(&i, &j, &l);
-	if (!s || !ft_create_result(&result, (char *) s))
+	if (s == 0)
 		return (0);
-	while (s[i])
+	word_start = 0;
+	words = ft_wc(s, c, &word_start);
+	i = 0;
+	result = (char **)malloc((words + 1) * sizeof(char *));
+	if (result == 0)
+		return (0);
+	while (i < words)
 	{
-		i = ft_jump_to_word_end((char *)s, c, i);
-		if (s[i])
-		{
-			j = i;
-			while (s[i] != c && s[i])
-				i++;
-			result[l] = malloc(i - j + 1);
-			ft_memcpy(result[l], &(s[j]), i - j);
-			result[l][i - j] = 0;
-			l++;
-		}
-		i = ft_jump_to_end((char *) s, i);
+		string = string_printer(s, c, &word_start);
+		if (string == 0)
+			return (0);
+		result[i++] = string;
 	}
-	result[l] = 0;
+	result[i] = 0;
 	return (result);
 }

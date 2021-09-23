@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/18 15:16:30 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:10:15 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_val
 	struct s_val	*last;
 	int				index;
 }	t_val;
-
 
 int			ft_atoi(const char *str);
 void		ft_bzero(void *s, size_t n);
@@ -59,7 +58,7 @@ char		*ft_strrchr(const char *s, int c);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
 char		*ft_itoa(int n);
-void		*ft_memdup(const void* mem, size_t size);
+void		*ft_memdup(const void *mem, size_t size);
 
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_substr(char const *s, unsigned int start, size_t len);

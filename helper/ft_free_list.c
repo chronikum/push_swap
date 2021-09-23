@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 18:21:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/22 15:13:28 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:13:42 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_clear(t_val **l)
 {
-	t_val *tmp;
+	t_val	*tmp;
 
 	tmp = (*l);
 	while (tmp)
