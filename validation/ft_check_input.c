@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 13:39:56 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 17:02:13 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/24 09:42:10 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static int	ft_check_digits(char **argv, int argc)
 			{
 				if (!ft_is_number(split[i[2]++]))
 					return (ft_double_free(split));
-				ft_double_free(split);
 			}
 			i[1] += i[2];
 		}

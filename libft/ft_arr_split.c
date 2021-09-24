@@ -6,9 +6,11 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 15:07:22 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 17:03:08 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/24 09:38:34 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static int	ft_wlc(char const *s, char c, int *pws)
 {
@@ -76,7 +78,7 @@ static char	*ft_printer(char const *s, char c, int *pws)
 	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_arr_split(char const *s, char c)
 {
 	int		ws;
 	int		words;

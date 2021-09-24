@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/23 16:10:15 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/24 09:38:45 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ t_val		*ft_lstvalmap(t_val *lst, void *(*f)(void *), void (*del)(void *));
 int			ft_lstvalsize(t_val *lst);
 void		ft_lstvaldelone(t_val *lst, void (*del)(void*));
 t_val		*ft_lstvallast(t_val *lst);
+char		**ft_arr_split(char const *s, char c);
 
 #endif
