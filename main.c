@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/24 09:46:13 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/24 09:54:01 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static int	ft_number_pos(char **argv, int argc, int pos, char **c)
 			return (ft_atoi(argv[i[0] + 1]));
 		i[0]++;
 	}
-	ft_putstr_fd("ERROR!", 1);
 	return (i[1]);
 }
 
