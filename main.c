@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:06:59 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/24 10:31:14 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/24 10:43:39 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ int	main(int argc, char **argv)
 	t_pw	*arr;
 	int		valid;
 
+	if (argc == 1)
+		return (0);
 	if (!ft_check_input(argv, argc))
 		return (ft_exit_error());
 	valid = ft_fill_array(&arr, argv, argc);

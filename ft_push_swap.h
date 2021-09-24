@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:51:43 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/24 09:51:51 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/24 10:39:30 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		ft_small_sort(t_pw **arr);
 int			ft_check_three_rev_sorted(t_pw **arr);
 
 void		ft_bigger_push(t_pw **arr);
+void		ft_small_big_sort(t_pw **arr);
 
 void		ft_below_50(t_pw *arr);
 
