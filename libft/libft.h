@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/24 09:38:45 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/24 09:47:21 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ int			ft_lstvalsize(t_val *lst);
 void		ft_lstvaldelone(t_val *lst, void (*del)(void*));
 t_val		*ft_lstvallast(t_val *lst);
 char		**ft_arr_split(char const *s, char c);
+void		*ft_realloc(void **src, size_t size);
 
 #endif
