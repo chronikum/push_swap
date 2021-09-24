@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 16:59:10 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/20 14:22:29 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/24 10:13:57 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_sort_part(t_pw **arr, int b1, int b2)
 	int	n;
 
 	d = 3;
-	n = 6;
+	n = 7;
 	while (d != -1)
 	{
 		ft_split_quarter(arr, n, d, b2);
@@ -52,14 +52,21 @@ void	ft_bigger_push(t_pw **arr)
 	int	beginning1;
 	int	beginning2;
 
-	ft_split_quarter(arr, 6, 5, -1000);
+	ft_split_quarter(arr, 7, 6, -1000);
 	beginning1 = ft_get_biggest((*(*arr)->b))->index;
 	beginning2 = ft_get_smallest((*(*arr)->b))->index;
 	ft_half_sort(arr);
 	while (beginning1 != (*(*arr)->a)->index)
 		ft_ra(arr);
 	ft_ra(arr);
-	ft_split_quarter(arr, 6, 4, beginning2);
+	ft_split_quarter(arr, 7, 5, beginning2);
+	beginning1 = ft_get_biggest((*(*arr)->a))->index;
+	beginning2 = ft_get_smallest((*(*arr)->b))->index;
+	ft_half_sort(arr);
+	while (beginning1 != (*(*arr)->a)->index)
+		ft_ra(arr);
+	ft_ra(arr);
+	ft_split_quarter(arr, 7, 4, beginning2);
 	beginning1 = ft_get_biggest((*(*arr)->a))->index;
 	beginning2 = ft_get_smallest((*(*arr)->b))->index;
 	ft_half_sort(arr);
