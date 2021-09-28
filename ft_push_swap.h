@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:51:43 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/28 08:27:55 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/28 08:29:11 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <stdio.h>
 
 typedef struct s_pw
 {
