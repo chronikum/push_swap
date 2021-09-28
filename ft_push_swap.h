@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:51:43 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/24 10:39:30 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/28 08:27:55 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int			ft_check_stack_sorted(t_val *l);
 
 t_val		*ft_get_smallest(t_val *l);
 t_val		*ft_get_biggest(t_val *l);
-t_val		*ft_biggest_until(t_val *l, int x);
 int			ft_find_position(t_val *l, int needle);
 t_val		*ft_lstvalbyindex(t_val *lst, int index);
 
