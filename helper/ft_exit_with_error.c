@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 15:06:00 by jfritz            #+#    #+#             */
-/*   Updated: 2021/09/28 08:42:10 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/09/28 08:43:32 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 */
 int	ft_exit_error(void)
 {
-	ft_putstr_fd("Error/n", 2);
+	ft_putstr_fd("Error\n", 2);
 	return (1);
 }
